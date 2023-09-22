@@ -23,6 +23,7 @@ package-lock.json
 /public/vendor
 /lang/vendor
 /storage/*.key
+/storage/clockwork/
 /storage/dcc-data/
 /vendor
 yarn.lock
