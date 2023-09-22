@@ -1,3 +1,21 @@
+**NB: Overridden to use Laravel Sail**
+
+To get started:
+
+```
+git clone https://github.com/Magentron/bagisto
+cd bagisto
+composer install
+[ -s .env ] || cp .env.example .env
+```
+
+Possibly check forwarding ports in the `.env` file.
+
+```
+vendor/bin/sail up -d --build
+vendor/bin/sail exec laravel.test composer run-script post-create-project-cmd
+```
+
 <p align="center">
     <a href="http://www.bagisto.com"><img src="https://bagisto.com/wp-content/themes/bagisto/images/logo.png" alt="Total Downloads"></a>
 </p>
