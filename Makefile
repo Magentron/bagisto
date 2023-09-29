@@ -66,7 +66,7 @@ docker-build-service-dev:
 	@[ ! -z '$(SERVICE)' ] || (echo Missing SERVICE=... 1>&2; exit 1)
 	@make docker-build-dev EXTRA='$(EXTRA) $(SERVICE)'
 
-docker-down:
+docker-down down:
 	time $(SAIL) down $(EXTRA)
 
 docker-down-volumes:
@@ -75,7 +75,7 @@ docker-down-volumes:
 docker-up:
 	time $(SAIL) up $(EXTRA)
 
-docker-up-detached:
+docker-up-detached up:
 	@make docker-up EXTRA='-d $(EXTRA)'
 
 docker-up-build docker-build-up run:		docker-build docker-up-detached
