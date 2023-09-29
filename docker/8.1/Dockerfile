@@ -2,9 +2,19 @@ FROM ubuntu:22.04
 
 LABEL maintainer="Taylor Otwell"
 
-ARG WWWGROUP
+ARG WWWGROUP=${WWWGROUP:-1000}
 ARG NODE_VERSION=18
 ARG POSTGRES_VERSION=15
+
+ARG BUILD_DEVELOPMENT
+# if --build-arg BUILD_DEVELOPMENT=1, set APP_ENV to 'local' or set to null otherwise.
+ENV APP_ENV=${BUILD_DEVELOPMENT:+local}
+# if APP_ENV is null, set it to 'production' (or leave as is otherwise).
+ENV APP_ENV=${APP_ENV:-production}
+
+ARG BUILD_APCU=0
+# if --build-arg BUILD_APCU=1, add PHP extension APCu
+ENV PACKAGE_APCU=${BUILD_APCU:+php8.1-apcu}
 
 WORKDIR /var/www/html
 
@@ -21,6 +31,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y php8.1-cli php8.1-dev \
        php8.1-pgsql php8.1-sqlite3 php8.1-gd php8.1-imagick \
+       $PACKAGE_APCU \
        php8.1-curl \
        php8.1-imap php8.1-mysql php8.1-mbstring \
        php8.1-xml php8.1-zip php8.1-bcmath php8.1-soap \

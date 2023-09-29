@@ -2,9 +2,19 @@ FROM ubuntu:20.04
 
 LABEL maintainer="Taylor Otwell"
 
-ARG WWWGROUP
+ARG WWWGROUP=${WWWGROUP:-1000}
 ARG NODE_VERSION=16
 ARG POSTGRES_VERSION=13
+
+ARG BUILD_DEVELOPMENT
+# if --build-arg BUILD_DEVELOPMENT=1, set APP_ENV to 'local' or set to null otherwise.
+ENV APP_ENV=${BUILD_DEVELOPMENT:+local}
+# if APP_ENV is null, set it to 'production' (or leave as is otherwise).
+ENV APP_ENV=${APP_ENV:-production}
+
+ARG BUILD_APCU=0
+# if --build-arg BUILD_APCU=1, add PHP extension APCu
+ENV PACKAGE_APCU=${BUILD_APCU:+php8.0-apcu}
 
 WORKDIR /var/www/html
 
@@ -21,6 +31,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y php8.0-cli php8.0-dev \
        php8.0-pgsql php8.0-sqlite3 php8.0-gd php8.0-imagick \
+       $PACKAGE_APCU \
        php8.0-curl php8.0-memcached \
        php8.0-imap php8.0-mysql php8.0-mbstring \
        php8.0-xml php8.0-zip php8.0-bcmath php8.0-soap \

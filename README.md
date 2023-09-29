@@ -2,19 +2,31 @@
 
 To get started:
 
-```
-git clone https://github.com/Magentron/bagisto
-cd bagisto
-composer install
-[ -s .env ] || cp .env.example .env
-```
+- Ensure you have the following installed locally:
+  - PHP 8+
+  - composer 2+
+  - docker
+  - make
 
-Possibly check forwarding ports in the `.env` file.
+- Execute the following commands:
 
-```
-vendor/bin/sail up -d --build
-vendor/bin/sail exec laravel.test composer run-script post-create-project-cmd
-```
+  ```
+  git clone https://github.com/Magentron/bagisto
+  cd bagisto
+  ```
+
+  After that:
+
+  `make build` or `make build-dev` for a development environment.
+
+  This will execute the following commands (more or less):
+
+  ```
+  composer install
+  [ -s .env ] || cp .env.example .env
+  vendor/bin/sail up -d --build
+  vendor/bin/sail exec laravel.test composer run-script post-create-project-cmd
+  ```
 
 <p align="center">
     <a href="http://www.bagisto.com"><img src="https://bagisto.com/wp-content/themes/bagisto/images/logo.png" alt="Total Downloads"></a>
