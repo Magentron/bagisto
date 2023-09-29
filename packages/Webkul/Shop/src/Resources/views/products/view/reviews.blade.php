@@ -34,6 +34,7 @@
                                     name="attachments"
                                     class="!p-0 !mb-0"
                                     rules="required"
+                                    ref="reviewImages"
                                     :label="trans('shop::app.products.view.reviews.attachments')"
                                     :is-multiple="true"
                                 >
@@ -50,7 +51,7 @@
                         <div>
                             <x-shop::form.control-group>
                                 <x-shop::form.control-group.label class="mt-[0] required">
-                                    @lang('shop::app.products.rating')
+                                    @lang('shop::app.products.view.reviews.rating')
                                 </x-shop::form.control-group.label>
 
                                 <x-shop::products.star-rating
@@ -58,7 +59,7 @@
                                     :value="old('rating') ?? 5"
                                     :disabled="false"
                                     rules="required"
-                                    :label="trans('shop::app.products.rating')"
+                                    :label="trans('shop::app.products.view.reviews.rating')"
                                 >
                                 </x-shop::products.star-rating>
 
@@ -70,7 +71,7 @@
 
                             <x-shop::form.control-group>
                                 <x-shop::form.control-group.label class="required">
-                                    @lang('shop::app.products.title')
+                                    @lang('shop::app.products.view.reviews.title')
                                 </x-shop::form.control-group.label>
 
                                 <x-shop::form.control-group.control
@@ -78,8 +79,8 @@
                                     name="title"
                                     :value="old('title')"
                                     rules="required"
-                                    :label="trans('shop::app.products.title')"
-                                    :placeholder="trans('shop::app.products.title')"
+                                    :label="trans('shop::app.products.view.reviews.title')"
+                                    :placeholder="trans('shop::app.products.view.reviews.title')"
                                 >
                                 </x-shop::form.control-group.control>
 
@@ -91,7 +92,7 @@
 
                             <x-shop::form.control-group>
                                 <x-shop::form.control-group.label class="required">
-                                    @lang('shop::app.products.comment')
+                                    @lang('shop::app.products.view.reviews.comment')
                                 </x-shop::form.control-group.label>
 
                                 <x-shop::form.control-group.control
@@ -100,8 +101,8 @@
                                     name="comment"
                                     :value="old('comment')"
                                     rules="required"
-                                    :label="trans('shop::app.products.comment')"
-                                    :placeholder="trans('shop::app.products.comment')"
+                                    :label="trans('shop::app.products.view.reviews.comment')"
+                                    :placeholder="trans('shop::app.products.view.reviews.comment')"
                                 >
                                 </x-shop::form.control-group.control>
 
@@ -117,7 +118,7 @@
                                     class="primary-button w-full max-w-[374px] py-[16px] px-[43px] rounded-[18px] text-center"
                                     type='submit'
                                 >
-                                    @lang('shop::app.products.submit-review')
+                                    @lang('shop::app.products.view.reviews.submit-review')
                                 </button>
                                 
                                 <button
@@ -144,7 +145,7 @@
                     <!-- Review Section Header -->
                     <div class="flex gap-[15px] items-center justify-between  max-sm:flex-wrap">
                         <h3 class="font-dmserif text-[30px] max-sm:text-[22px]">
-                            @lang('shop::app.products.customer-review')
+                            @lang('shop::app.products.view.reviews.customer-review')
                         </h3>
 
                         <div
@@ -153,7 +154,7 @@
                         >
                             <span class="icon-pen text-[24px]"></span>
 
-                            @lang('shop::app.products.write-a-review')
+                            @lang('shop::app.products.view.reviews.write-a-review')
                         </div>
                     </div>
 
@@ -165,7 +166,7 @@
                             <x-shop::products.star-rating :value="$avgRatings"></x-shop::products.star-rating>
 
                             <p class="text-[12px] text-[#858585]">
-                                (@{{ meta.total }} @lang('shop::app.products.customer-review'))
+                                (@{{ meta.total }} @lang('shop::app.products.view.reviews.customer-review'))
                             </p>
                         </div>
 
@@ -196,7 +197,7 @@
                             v-if="links?.next"
                             @click="get()"
                         >
-                            @lang('shop::app.products.load-more')
+                            @lang('shop::app.products.view.reviews.load-more')
                         </button>
                     </template>
 
@@ -206,7 +207,7 @@
                             <img class="" src="{{ bagisto_asset('images/review.png') }}" alt="" title="">
 
                             <p class="text-[20px]">
-                                @lang('shop::app.products.empty-review')
+                                @lang('shop::app.products.view.reviews.empty-review')
                             </p>
                         </div>
                     </template>
@@ -224,7 +225,7 @@
                     :title="review.name"
                 >
                     <span
-                        class="text-[24px] text-[#7D7D7D] font-semibold"
+                        class="text-[24px] text-[#6E6E6E] font-semibold"
                         v-text="review.name.split(' ').map(name => name.charAt(0).toUpperCase()).join('')"
                     >
                     </span>
@@ -255,13 +256,13 @@
                 </p>
 
                 <p
-                    class="mt-[20px] text-[16px] text-[#7D7D7D] font-semibold max-sm:text-[12px]"
+                    class="mt-[20px] text-[16px] text-[#6E6E6E] font-semibold max-sm:text-[12px]"
                     v-text="review.title"
                 >
                 </p>
 
                 <p
-                    class="mt-[20px] text-[16px] text-[#7D7D7D] max-sm:text-[12px]"
+                    class="mt-[20px] text-[16px] text-[#6E6E6E] max-sm:text-[12px]"
                     v-text="review.comment"
                 >
                 </p>
@@ -346,7 +347,7 @@
                     }
                 },
 
-                store(params, { resetForm }) {
+                store(params, { resetForm, setErrors }) {
                     this.$axios.post('{{ route("shop.api.products.reviews.store", $product->id) }}', params, {
                             headers: {
                                 'Content-Type': 'multipart/form-data'
@@ -359,7 +360,15 @@
 
                             this.canReview = false;
                         })
-                        .catch(error => {});
+                        .catch(error => {
+                            setErrors({'attachments': ["@lang('shop::app.products.view.reviews.failed-to-upload')"]});
+
+                            this.$refs.reviewImages.uploadedFiles.forEach(element => {
+                                setTimeout(() => {
+                                    this.$refs.reviewImages.removeFile();
+                                }, 0);
+                            });
+                        });
                 },
 
                 selectReviewImage() {

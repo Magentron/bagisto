@@ -156,6 +156,7 @@ return [
                     'status'           => 'מצב',
                     'success'          => 'הצלחה',
                     'view'             => 'צפה',
+                    'product-count'    => ':count + מוצרים נוספים'
                 ],
             ],
 
@@ -175,7 +176,6 @@ return [
                 'comment-success'       => 'ההערה נוספה בהצלחה.',
                 'create-success'        => 'הזמנה נוצרה בהצלחה',
                 'cancel-success'        => 'ההזמנה בוטלה בהצלחה',
-                'create-invoice'        => 'צור חשבונית',
                 'discount'              => 'הנחה - :discount',
                 'download-pdf'          => 'הורד PDF',
                 'grand-total'           => 'סכום כולל - :grand_total',
@@ -185,7 +185,6 @@ return [
                 'item-shipped'          => 'נשלח (:qty_shipped)',
                 'item-canceled'         => 'בוטלו (:qty_canceled)',
                 'item-refunded'         => 'הוחזרו (:qty_refunded)',
-                'invoice'               => 'חשבונית',
                 'invoice-id'            => 'חשבונית #:invoice',
                 'invoices'              => 'חשבוניות',
                 'notify-customer'       => 'הודע ללקוח',
@@ -193,7 +192,6 @@ return [
                 'no-shipment-found'     => 'לא נמצאו משלוחים',
                 'name'                  => 'שם',
                 'no-refund-found'       => 'לא נמצא החזר',
-                'new-invoice'           => 'חשבונית חדשה',
                 'order-date'            => 'תאריך הזמנה',
                 'order-status'          => 'מצב הזמנה',
                 'order-information'     => 'מידע על הזמנה',
@@ -202,7 +200,6 @@ return [
                 'payment-method'        => 'אמצעי תשלום',
                 'per-unit'              => 'ליחידה',
                 'quantity'              => 'כמות',
-                'qty-to-invoiced'       => 'כמות לחשבונית',
                 'refunded'              => 'הוחזר',
                 'refund-id'             => 'החזר #:refund',
                 'refund'                => 'החזר',
@@ -423,10 +420,17 @@ return [
             ],
 
             'create' => [
-                'creation-error' => 'יצירת חשבונית הזמנה אסורה.',
-                'create-success' => 'חשבונית נוצרה בהצלחה',
-                'invalid-qty'    => 'מצאנו כמות לא תקינה לחשבונית מוצרים.',
-                'product-error'  => 'לא ניתן ליצור חשבונית ללא מוצרים.',
+                'invoice'         => 'חשבונית',
+                'create-invoice'  => 'יצירת חשבונית',
+                'new-invoice'     => 'חשבונית חדשה',
+                'product-image'   => 'תמונת המוצר',
+                'amount-per-unit' => ':amount ליחידה x :qty כמות',
+                'sku'             => 'SKU - :sku',
+                'qty-to-invoiced' => 'כמות לחשבונית',
+                'creation-error'  => 'אי אפשר ליצור חשבונית הזמנה.',
+                'create-success'  => 'חשבונית נוצרה בהצלחה',
+                'invalid-qty'     => 'נמצאה כמות לא תקינה לפריטים לחשבונית.',
+                'product-error'   => 'אי אפשר ליצור חשבונית בלעדי מוצרים.',
             ],
 
             'invoice-pdf' => [
@@ -613,11 +617,11 @@ return [
                         'title'      => 'מוצרים מומלצים בקנייה',
                     ],
 
-                    'add-btn'     => 'הוסף מוצר',
-                    'delete'      => 'מחק',
-                    'empty-title' => 'הוסף מוצר',
-                    'empty-info'  => 'כדי להוסיף מוצרים מסוג :type ברגע.',
-                    'sku'         => 'SKU - :sku',
+                    'add-btn'           => 'הוסף מוצר',
+                    'delete'            => 'מחק',
+                    'empty-title'       => 'הוסף מוצר',
+                    'empty-info'        => 'כדי להוסיף מוצרים מסוג :type ברגע.',
+                    'sku'               => 'SKU - :sku',
                     'image-placeholder' => 'תמונת המוצר',
                 ],
 
@@ -656,7 +660,6 @@ return [
                             'status'          => 'סטטוס',
                             'weight'          => 'משקל',
                             'images'          => 'תמונות',
-
                         ],
 
                         'mass-edit' => [
@@ -674,22 +677,24 @@ return [
                     ],
 
                     'grouped' => [
-                        'add-btn'     => 'הוסף מוצר',
-                        'delete'      => 'מחק',
-                        'default-qty' => 'כמות ברירת מחדל',
-                        'empty-title' => 'הוסף מוצר',
-                        'empty-info'  => 'כדי ליצור שילובים שונים של מוצר בצעדה.',
-                        'info'        => 'מוצר מקובץ משמים לעצמו מוצרים עצמאיים המוצגים כקבוצה, מאפשרים שונות או תיאום לפי עונה או נושא. כל מוצר ניתן לרכוש באופן עצמאי או כחלק מהקבוצה.',
-                        'sku'         => 'SKU - :sku',
-                        'title'       => 'מוצרים בקבוצה',
+                        'add-btn'           => 'הוסף מוצר',
+                        'delete'            => 'מחק',
+                        'default-qty'       => 'כמות ברירת מחדל',
+                        'empty-title'       => 'הוסף מוצר',
+                        'empty-info'        => 'כדי ליצור שילובים שונים של מוצר בצעדה.',
+                        'image-placeholder' => 'תמונת המוצר',
+                        'info'              => 'מוצר מקובץ משמים לעצמו מוצרים עצמאיים המוצגים כקבוצה, מאפשרים שונות או תיאום לפי עונה או נושא. כל מוצר ניתן לרכוש באופן עצמאי או כחלק מהקבוצה.',
+                        'sku'               => 'SKU - :sku',
+                        'title'             => 'מוצרים בקבוצה',
                     ],
 
                     'bundle' => [
-                        'add-btn'     => 'הוסף אפשרות',
-                        'empty-title' => 'הוסף אפשרות',
-                        'empty-info'  => 'כדי ליצור אפשרויות אריזה בצעדה.',
-                        'info'        => 'מוצר אריזת חבילה הוא חבילת מספר פריטים או שירותים מרובים המתנהלים יחד במחיר מיוחד, המספקים ערך ונוחות ללקוחות.',
-                        'title'       => 'פרטי אריזה',
+                        'add-btn'           => 'הוסף אפשרות',
+                        'empty-title'       => 'הוסף אפשרות',
+                        'empty-info'        => 'כדי ליצור אפשרויות אריזה בצעדה.',
+                        'image-placeholder' => 'תמונת המוצר',
+                        'info'              => 'מוצר אריזת חבילה הוא חבילת מספר פריטים או שירותים מרובים המתנהלים יחד במחיר מיוחד, המספקים ערך ונוחות ללקוחות.',
+                        'title'             => 'פרטי אריזה',
 
                         'update-create' => [
                             'checkbox'    => 'תיבת סימון',
@@ -1888,7 +1893,7 @@ return [
                 'delete-success'              => 'קופון כלל עגלת הקניות נמחק בהצלחה',
                 'mass-delete-success'         => 'פריטים שנבחרו נמחקו בהצלחה',
                 'success'                     => ':name נוצר בהצלחה',
-            
+
                 'datagrid' => [
                     'coupon-code'     => 'קוד קופון',
                     'created-date'    => 'תאריך יצירה',
@@ -2459,7 +2464,7 @@ return [
             'delete-warning'     => 'האם אתה בטוח שברצונך לבצע פעולה זו?',
             'login-error'        => 'אנא בדוק את פרטי הכניסה שלך ונסה שוב.',
             'activate-warning'   => 'החשבון שלך עדיין לא הופעל, אנא צור קשר עם המנהל.',
-            'last-delete-error'  => 'נכשל במחיקת המשתמש האחרון.'
+            'last-delete-error'  => 'נכשל במחיקת המשתמש האחרון.',
         ],
 
         'roles' => [
@@ -2558,6 +2563,7 @@ return [
                 'footer-link'                   => 'קישורי תחתית',
                 'footer-link-form-title'        => 'קישור תחתית',
                 'slider-description'            => 'התאמת ערכת הנושא הנמצאת בקרוסלה.',
+                'slider-required'               => 'שדה המחוון נדרש.',
                 'slider-add-btn'                => 'הוסף מציג',
                 'general'                       => 'כללי',
                 'add-filter-btn'                => 'הוסף מסנן',
@@ -2565,8 +2571,6 @@ return [
                 'save-btn'                      => 'שמור',
                 'filter-title'                  => 'כותרת',
                 'sort'                          => 'מיון',
-                'desc'                          => 'יורד',
-                'asc'                           => 'עולה',
                 'limit'                         => 'מגבלה',
                 'key'                           => 'מפתח: :key',
                 'value'                         => 'ערך: :value',
@@ -2675,7 +2679,7 @@ return [
                 ],
 
                 'products' => [
-                    'info'  => 'הגדרות לרכישה באורח אורח, לדף הבית, לדף התצוגה של המוצר, לדף העגלה, לפרטי החנות, לסקירות ולשיתוף חברתי של תכונות',
+                    'info'  => 'הגדרת קנייה כאורח אורח, דף תצוגת מוצר, דף תצוגת עגלת הקניות, חנות החנות, ביקורת ושיתוף חברתי של התכונה.',
                     'title' => 'מוצרים',
 
                     'guest-checkout' => [
@@ -3040,13 +3044,13 @@ return [
                 'title' => 'מיסים',
 
                 'catalog' => [
-                    'title' => 'קטלוג',
+                    'title'      => 'קטלוג',
                     'title-info' => 'קביעת מחיר והגדרת מיקום כברירת מחדל',
 
                     'pricing' => [
                         'title'         => 'קביעת מחיר',
                         'title-info'    => 'מידע מפורט בנוגע למחירים של מוצרים או שירותים, לעלויות הבסיס, להנחות, למסים ולתשלומים נוספים.',
-                        'tax-inclusive' => 'כולל מיסים'
+                        'tax-inclusive' => 'כולל מיסים',
                     ],
 
                     'default-location-calculation' => [
@@ -3054,7 +3058,7 @@ return [
                         'default-state'     => 'מדינת ברירת מחדל',
                         'default-post-code' => 'מיקוד ברירת מחדל',
                         'title'             => 'חישוב מיקום ברירת מחדל',
-                        'title-info'        => 'קביעה אוטומטית של מיקום ברירת המחדל או מיקום נוסף בהתבסס על פרמטרים או הגדרות מוגדרות מראש, בהתאם לפרמטרים או הגדרות שנקבעו מראש.'
+                        'title-info'        => 'קביעה אוטומטית של מיקום ברירת המחדל או מיקום נוסף בהתבסס על פרמטרים או הגדרות מוגדרות מראש, בהתאם לפרמטרים או הגדרות שנקבעו מראש.',
                     ],
                 ],
             ],
@@ -3078,13 +3082,13 @@ return [
                     'categories'                      => 'קטגוריות',
                     'customers'                       => 'לקוחות',
                     'sku'                             => 'SKU: :sku',
-                    'explore-all-matching-products'   => 'גלה את כל המוצרים התואמים ל-":query" (:count)',
+                    'explore-all-matching-products'   => 'גלה את כל המוצרים התואמים ל-\":query\" (:count)',
                     'explore-all-products'            => 'גלה את כל המוצרים',
-                    'explore-all-matching-orders'     => 'גלה את כל ההזמנות התואמות ל-":query" (:count)',
+                    'explore-all-matching-orders'     => 'גלה את כל ההזמנות התואמות ל-\":query\" (:count)',
                     'explore-all-orders'              => 'גלה את כל ההזמנות',
-                    'explore-all-matching-categories' => 'גלה את כל הקטגוריות התואמות ל-":query" (:count)',
+                    'explore-all-matching-categories' => 'גלה את כל הקטגוריות התואמות ל-\":query\" (:count)',
                     'explore-all-categories'          => 'גלה את כל הקטגוריות',
-                    'explore-all-matching-customers'  => 'גלה את כל הלקוחות התואמים ל-":query" (:count)',
+                    'explore-all-matching-customers'  => 'גלה את כל הלקוחות התואמים ל-\":query\" (:count)',
                     'explore-all-customers'           => 'גלה את כל הלקוחות',
                 ],
             ],
@@ -3156,11 +3160,24 @@ return [
             ],
 
             'filters' => [
-                'title' => 'החל סינון',
+                'title'  => 'החל סינון',
+                'select' => 'בחר',
+
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => 'הקלד לפחות 2 תווים...',
+                        'no-results'        => 'לא נמצאו תוצאות...',
+                    ],
+                ],
 
                 'custom-filters' => [
                     'title'     => 'סננים מותאמים אישית',
                     'clear-all' => 'נקה הכל',
+                ],
+
+                'boolean-options' => [
+                    'true'  => 'נכון',
+                    'false' => 'לא נכון',
                 ],
 
                 'date-options' => [
@@ -3274,6 +3291,7 @@ return [
         'events'                   => 'אירועים',
         'sitemaps'                 => 'מפות אתר',
         'newsletter-subscriptions' => 'מנויים לניוזלטר',
+        'transactions'             => 'עסקאות',
     ],
 
     'errors' => [

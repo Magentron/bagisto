@@ -156,6 +156,7 @@ return [
                     'status'           => 'Estado',
                     'success'          => 'Éxito',
                     'view'             => 'Ver',
+                    'product-count'    => ':count + Más productos'
                 ],
             ],
 
@@ -175,7 +176,6 @@ return [
                 'comment-success'       => 'Comentario agregado con éxito.',
                 'create-success'        => 'Pedido creado con éxito',
                 'cancel-success'        => 'Pedido cancelado con éxito',
-                'create-invoice'        => 'Crear Factura',
                 'discount'              => 'Descuento - :discount',
                 'download-pdf'          => 'Descargar PDF',
                 'grand-total'           => 'Total General - :grand_total',
@@ -185,7 +185,6 @@ return [
                 'item-shipped'          => 'Enviado (:qty_shipped)',
                 'item-canceled'         => 'Cancelado (:qty_canceled)',
                 'item-refunded'         => 'Reembolsado (:qty_refunded)',
-                'invoice'               => 'Factura',
                 'invoice-id'            => 'Factura #:invoice',
                 'invoices'              => 'Facturas',
                 'notify-customer'       => 'Notificar al Cliente',
@@ -193,7 +192,6 @@ return [
                 'no-shipment-found'     => 'No se encontraron envíos',
                 'name'                  => 'Nombre',
                 'no-refund-found'       => 'No se encontraron reembolsos',
-                'new-invoice'           => 'Nueva Factura',
                 'order-date'            => 'Fecha de Pedido',
                 'order-status'          => 'Estado del Pedido',
                 'order-information'     => 'Información del Pedido',
@@ -202,7 +200,6 @@ return [
                 'payment-method'        => 'Método de Pago',
                 'per-unit'              => 'Por Unidad',
                 'quantity'              => 'Cantidad',
-                'qty-to-invoiced'       => 'Cant. a Facturar',
                 'refunded'              => 'Reembolsado',
                 'refund-id'             => 'Reembolso #:refund',
                 'refund'                => 'Reembolso',
@@ -230,7 +227,7 @@ return [
                 'processing'            => 'Procesando',
                 'canceled'              => 'Cancelado',
                 'closed'                => 'Cerrado',
-                'completed'             => 'Completado'
+                'completed'             => 'Completado',
             ],
         ],
 
@@ -422,11 +419,18 @@ return [
                 'tax'                    => 'Monto de Impuestos - :tax',
             ],
 
-            'create'   => [
-                'creation-error' => 'No se permite la creación de factura de pedido.',
-                'create-success' => 'Factura creada exitosamente',
-                'invalid-qty'    => 'Encontramos una cantidad no válida para facturar ítems.',
-                'product-error'  => 'No se puede crear una factura sin productos.',
+            'create' => [
+                'invoice'         => 'Factura',
+                'create-invoice'  => 'Crear Factura',
+                'new-invoice'     => 'Nueva Factura',
+                'product-image'   => 'Imagen del Producto',
+                'amount-per-unit' => ':amount Por Unidad x :qty Cantidad',
+                'sku'             => 'SKU - :sku',
+                'qty-to-invoiced' => 'Cantidad a Facturar',
+                'creation-error'  => 'No se permite la creación de la factura del pedido.',
+                'create-success'  => 'Factura creada con éxito',
+                'invalid-qty'     => 'Encontramos una cantidad inválida para los elementos a facturar.',
+                'product-error'   => 'No se puede crear una factura sin productos.',
             ],
 
             'invoice-pdf' => [
@@ -673,22 +677,24 @@ return [
                     ],
 
                     'grouped' => [
-                        'add-btn'     => 'Agregar Producto',
-                        'delete'      => 'Eliminar',
-                        'default-qty' => 'Cantidad Predeterminada',
-                        'empty-title' => 'Agregar Producto',
-                        'empty-info'  => 'Para crear varias combinaciones de productos de forma rápida.',
-                        'info'        => 'Un producto agrupado consta de elementos independientes presentados como un conjunto, lo que permite variaciones o coordinación por temporada o tema. Cada producto se puede comprar individualmente o como parte del grupo.',
-                        'sku'         => 'SKU - :sku',
-                        'title'       => 'Productos Agrupados',
+                        'add-btn'           => 'Agregar Producto',
+                        'delete'            => 'Eliminar',
+                        'default-qty'       => 'Cantidad Predeterminada',
+                        'empty-title'       => 'Agregar Producto',
+                        'empty-info'        => 'Para crear varias combinaciones de productos de forma rápida.',
+                        'image-placeholder' => 'Imagen del Producto',
+                        'info'              => 'Un producto agrupado consta de elementos independientes presentados como un conjunto, lo que permite variaciones o coordinación por temporada o tema. Cada producto se puede comprar individualmente o como parte del grupo.',
+                        'sku'               => 'SKU - :sku',
+                        'title'             => 'Productos Agrupados',
                     ],
 
                     'bundle' => [
-                        'add-btn'     => 'Agregar Opción',
-                        'empty-title' => 'Agregar Opción',
-                        'empty-info'  => 'Para crear opciones de paquetes de forma rápida.',
-                        'info'        => 'Un producto de paquete es un paquete de varios artículos o servicios que se venden juntos a un precio especial, ofreciendo valor y comodidad a los clientes.',
-                        'title'       => 'Artículos del Paquete',
+                        'add-btn'           => 'Agregar Opción',
+                        'empty-title'       => 'Agregar Opción',
+                        'empty-info'        => 'Para crear opciones de paquetes de forma rápida.',
+                        'image-placeholder' => 'Imagen del Producto',
+                        'info'              => 'Un producto de paquete es un paquete de varios artículos o servicios que se venden juntos a un precio especial, ofreciendo valor y comodidad a los clientes.',
+                        'title'             => 'Artículos del Paquete',
 
                         'update-create' => [
                             'checkbox'    => 'Casilla de Verificación',
@@ -932,7 +938,7 @@ return [
                 'value-per-locale'       => 'Valor por Localización',
                 'value-per-channel'      => 'Valor por Canal',
                 'yes'                    => 'Sí',
-                'default-value'         => 'Valor predeterminado',
+                'default-value'          => 'Valor predeterminado',
 
                 'option'                 => [
                     'color'     => 'Muestra de Color',
@@ -1257,7 +1263,7 @@ return [
                 'title'                       => 'Vista del Cliente',
                 'note-placeholder'            => 'Escribe tu Nota aquí',
                 'order-pending'               => 'No se puede eliminar la cuenta porque algunos pedidos están pendientes o en estado de procesamiento.',
-                'account-delete-confirmation' =>'¿Estás seguro de que deseas eliminar esta cuenta?',
+                'account-delete-confirmation' => '¿Estás seguro de que deseas eliminar esta cuenta?',
                 'address-delete-confirmation' => '¿Estás seguro de que quieres eliminar esta dirección?',
             ],
         ],
@@ -1887,7 +1893,7 @@ return [
                 'delete-success'              => 'Cupón de regla del carrito eliminado con éxito',
                 'mass-delete-success'         => 'Elementos seleccionados eliminados con éxito',
                 'success'                     => ':name creado con éxito',
-            
+
                 'datagrid' => [
                     'coupon-code'     => 'Código de cupón',
                     'created-date'    => 'Fecha de creación',
@@ -1980,19 +1986,19 @@ return [
         ],
 
         'edit' => [
-            'title'            => 'Editar Página',
-            'preview-btn'      => 'Vista Previa de la Página',
-            'save-btn'         => 'Guardar Página',
-            'general'          => 'General',
-            'page-title'       => 'Título de la Página',
-            'back-btn'         => 'Volver',
-            'channels'         => 'Canales',
-            'content'          => 'Contenido',
-            'seo'              => 'SEO',
-            'meta-keywords'    => 'Meta Palabras Clave',
-            'meta-description' => 'Meta Descripción',
-            'meta-title'       => 'Meta Título',
-            'url-key'          => 'Clave de URL',
+            'title'             => 'Editar Página',
+            'preview-btn'       => 'Vista Previa de la Página',
+            'save-btn'          => 'Guardar Página',
+            'general'           => 'General',
+            'page-title'        => 'Título de la Página',
+            'back-btn'          => 'Volver',
+            'channels'          => 'Canales',
+            'content'           => 'Contenido',
+            'seo'               => 'SEO',
+            'meta-keywords'     => 'Meta Palabras Clave',
+            'meta-description'  => 'Meta Descripción',
+            'meta-title'        => 'Meta Título',
+            'url-key'           => 'Clave de URL',
             'description'       => 'Descripción',
         ],
 
@@ -2458,7 +2464,7 @@ return [
             'delete-warning'     => '¿Estás seguro de que quieres realizar esta acción?',
             'login-error'        => 'Por favor, verifica tus credenciales e intenta nuevamente.',
             'activate-warning'   => 'Tu cuenta aún no ha sido activada, por favor, contacta al administrador.',
-            'last-delete-error'  => 'Error al eliminar el último usuario.'
+            'last-delete-error'  => 'Error al eliminar el último usuario.',
         ],
 
         'roles' => [
@@ -2557,6 +2563,7 @@ return [
                 'footer-link'                   => 'Enlaces del Pie de Página',
                 'footer-link-form-title'        => 'Enlace del Pie de Página',
                 'slider-description'            => 'Personalización de temas relacionados con el Slider.',
+                'slider-required'               => 'Campo de diapositivas es obligatorio.',
                 'slider-add-btn'                => 'Agregar Slider',
                 'general'                       => 'General',
                 'add-filter-btn'                => 'Agregar Filtro',
@@ -2564,8 +2571,6 @@ return [
                 'save-btn'                      => 'Guardar',
                 'filter-title'                  => 'Título',
                 'sort'                          => 'Orden',
-                'desc'                          => 'Descendente',
-                'asc'                           => 'Ascendente',
                 'limit'                         => 'Límite',
                 'key'                           => 'Clave: :key',
                 'value'                         => 'Valor: :value',
@@ -2588,10 +2593,10 @@ return [
                 'add-link'                      => 'Agregar Enlace',
                 'column'                        => 'Columna',
                 'path'                           => 'Ruta',
-                'edit'                          => 'Editar',
-                'back'                          => 'Volver',
-                'preview'                       => 'Vista previa',
-                'channels'                      => 'Canales',
+                'edit'                           => 'Editar',
+                'back'                           => 'Volver',
+                'preview'                        => 'Vista previa',
+                'channels'                       => 'Canales',
             ],
 
             'create-success' => 'Tema creado exitosamente',
@@ -2674,7 +2679,7 @@ return [
                 ],
 
                 'products' => [
-                    'info'  => 'Einrichten von Gastbestellung, Startseite, Produktansichtsseite, Warenkorbansichtsseite, Ladenfront, Bewertung und soziale Freigabe von Attributen.',
+                    'info'  => 'Configurar el pago como invitado, página de vista de productos, página de vista de carrito, frente de la tienda, revisión y compartir atributos en redes sociales.',
                     'title' => 'Produkte',
 
                     'guest-checkout' => [
@@ -3077,13 +3082,13 @@ return [
                     'categories'                      => 'Categorías',
                     'customers'                       => 'Clientes',
                     'sku'                             => 'SKU: :sku',
-                    'explore-all-matching-products'   => 'Explorar todos los productos que coinciden con ":query" (:count)',
+                    'explore-all-matching-products'   => 'Explorar todos los productos que coinciden con \":query\" (:count)',
                     'explore-all-products'            => 'Explorar todos los productos',
-                    'explore-all-matching-orders'     => 'Explorar todos los pedidos que coinciden con ":query" (:count)',
+                    'explore-all-matching-orders'     => 'Explorar todos los pedidos que coinciden con \":query\" (:count)',
                     'explore-all-orders'              => 'Explorar todos los pedidos',
-                    'explore-all-matching-categories' => 'Explorar todas las categorías que coinciden con ":query" (:count)',
+                    'explore-all-matching-categories' => 'Explorar todas las categorías que coinciden con \":query\" (:count)',
                     'explore-all-categories'          => 'Explorar todas las categorías',
-                    'explore-all-matching-customers'  => 'Explorar todos los clientes que coinciden con ":query" (:count)',
+                    'explore-all-matching-customers'  => 'Explorar todos los clientes que coinciden con \":query\" (:count)',
                     'explore-all-customers'           => 'Explorar todos los clientes',
                 ],
             ],
@@ -3155,11 +3160,24 @@ return [
             ],
 
             'filters' => [
-                'title' => 'Aplicar Filtros',
+                'title'  => 'Aplicar Filtros',
+                'select' => 'Seleccionar.',
+
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => 'Escribe al menos 2 caracteres...',
+                        'no-results'        => 'No se encontraron resultados...',
+                    ],
+                ],
 
                 'custom-filters' => [
                     'title'     => 'Filtros Personalizados',
                     'clear-all' => 'Limpiar Todo',
+                ],
+
+                'boolean-options' => [
+                    'true'  => 'Verdadero',
+                    'false' => 'Falso',
                 ],
 
                 'date-options' => [
@@ -3273,6 +3291,7 @@ return [
         'events'                   => 'Eventos',
         'sitemaps'                 => 'Mapas del Sitio',
         'newsletter-subscriptions' => 'Suscripciones al Boletín',
+        'transactions'             => 'Transacciones',
     ],
 
     'errors' => [

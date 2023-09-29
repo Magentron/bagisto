@@ -156,6 +156,7 @@ return [
                     'status'           => 'Status',
                     'success'          => 'Success',
                     'view'             => 'View',
+                    'product-count'    => ':count + More Products'
                 ],
             ],
 
@@ -175,7 +176,6 @@ return [
                 'comment-success'       => 'Comment added successfully.',
                 'create-success'        => 'Order created successfully',
                 'cancel-success'        => 'Order cancelled successfully',
-                'create-invoice'        => 'Create Invoice',
                 'discount'              => 'Discount - :discount',
                 'download-pdf'          => 'Download PDF',
                 'grand-total'           => 'Grand Total - :grand_total',
@@ -185,7 +185,6 @@ return [
                 'item-shipped'          => 'Shipped (:qty_shipped)',
                 'item-canceled'         => 'Canceled (:qty_canceled)',
                 'item-refunded'         => 'Refunded (:qty_refunded)',
-                'invoice'               => 'Invoice',
                 'invoice-id'            => 'Invoice #:invoice',
                 'invoices'              => 'Invoices',
                 'notify-customer'       => 'Notify Customer',
@@ -193,7 +192,6 @@ return [
                 'no-shipment-found'     => 'No Shipments Found',
                 'name'                  => 'Name',
                 'no-refund-found'       => 'No Refund Found',
-                'new-invoice'           => 'New Invoice',
                 'order-date'            => 'Order Date',
                 'order-status'          => 'Order Status',
                 'order-information'     => 'Order Information',
@@ -202,7 +200,6 @@ return [
                 'payment-method'        => 'Payment method',
                 'per-unit'              => 'Per Unit',
                 'quantity'              => 'Quantity',
-                'qty-to-invoiced'       => 'Qty. to invoiced',
                 'refunded'              => 'Refunded',
                 'refund-id'             => 'Refund #:refund',
                 'refund'                => 'Refund',
@@ -423,10 +420,17 @@ return [
             ],
 
             'create'   => [
-                'creation-error' => 'Order invoice creation is not allowed.',
-                'create-success' => 'Invoice created successfully',
-                'invalid-qty'    => 'We found an invalid quantity to invoice items.',
-                'product-error'  => 'Invoice can not be created without products.',
+                'invoice'         => 'Invoice',
+                'create-invoice'  => 'Create Invoice',
+                'new-invoice'     => 'New Invoice',
+                'product-image'   => 'Product Image',
+                'amount-per-unit' => ':amount Per Unit x :qty Quantity',
+                'sku'             => 'SKU - :sku',
+                'qty-to-invoiced' => 'Qty. to invoiced',
+                'creation-error'  => 'Order invoice creation is not allowed.',
+                'create-success'  => 'Invoice created successfully',
+                'invalid-qty'     => 'We found an invalid quantity to invoice items.',
+                'product-error'   => 'Invoice can not be created without products.',
             ],
 
             'invoice-pdf' => [
@@ -643,18 +647,18 @@ return [
                         ],
 
                         'edit' => [
-                            'disabled'        => 'Disabled',
-                            'edit-info'       => 'If you want to update product information in detail, then go to the',
-                            'edit-link-title' => 'Product Details Page',
-                            'enabled'         => 'Enabled',
-                            'title'           => 'Product',
-                            'name'            => 'Name',
-                            'price'           => 'Price',
-                            'quantities'      => 'Quantities',
-                            'save-btn'        => 'Save',
-                            'sku'             => 'SKU',
-                            'status'          => 'Status',
-                            'weight'          => 'Weight',
+                            'disabled'         => 'Disabled',
+                            'edit-info'        => 'If you want to update product information in detail, then go to the',
+                            'edit-link-title'  => 'Product Details Page',
+                            'enabled'          => 'Enabled',
+                            'title'            => 'Product',
+                            'name'             => 'Name',
+                            'price'            => 'Price',
+                            'quantities'       => 'Quantities',
+                            'save-btn'         => 'Save',
+                            'sku'              => 'SKU',
+                            'status'           => 'Status',
+                            'weight'           => 'Weight',
                             'images'           => 'Images',
                         ],
 
@@ -673,22 +677,24 @@ return [
                     ],
 
                     'grouped' => [
-                        'add-btn'     => 'Add Product',
-                        'delete'      => 'Delete',
-                        'default-qty' => 'Default Qty',
-                        'empty-title' => 'Add Product',
-                        'empty-info'  => 'To create various combination of product on a go.',
-                        'info'        => 'A grouped product comprises standalone items presented as a set, allowing variations or coordination by season or theme. Each product can be bought individually or as part of the group.',
-                        'sku'         => 'SKU - :sku',
-                        'title'       => 'Group Products',
+                        'add-btn'           => 'Add Product',
+                        'delete'            => 'Delete',
+                        'default-qty'       => 'Default Qty',
+                        'empty-title'       => 'Add Product',
+                        'empty-info'        => 'To create various combination of product on a go.',
+                        'image-placeholder' => 'Product Image',
+                        'info'              => 'A grouped product comprises standalone items presented as a set, allowing variations or coordination by season or theme. Each product can be bought individually or as part of the group.',
+                        'sku'               => 'SKU - :sku',
+                        'title'             => 'Group Products',
                     ],
 
                     'bundle' => [
-                        'add-btn'     => 'Add Option',
-                        'empty-title' => 'Add Option',
-                        'empty-info'  => 'To create bundle options on a go.',
-                        'info'        => 'A bundle product is a package of multiple items or services sold together at a special price, providing value and convenience to customers.',
-                        'title'       => 'Bundle Items',
+                        'add-btn'           => 'Add Option',
+                        'empty-title'       => 'Add Option',
+                        'empty-info'        => 'To create bundle options on a go.',
+                        'image-placeholder' => 'Product Image',
+                        'info'              => 'A bundle product is a package of multiple items or services sold together at a special price, providing value and convenience to customers.',
+                        'title'             => 'Bundle Items',
 
                         'update-create' => [
                             'checkbox'    => 'Checkbox',
@@ -1888,11 +1894,11 @@ return [
                 'mass-delete-success'         => 'Selected items Delete Successfully',
                 'success'                     => ':name Successfully Created',
 
-                'datagrid' =>[
+                'datagrid' => [
                     'coupon-code'     => 'Coupon Code',
                     'created-date'    => 'Created Date',
                     'expiration-date' => 'Expiration Date',
-                    'delete'          => 'Delete', 
+                    'delete'          => 'Delete',
                     'id'              => 'ID',
                     'times-used'      => 'Times Used',
                 ],
@@ -2434,8 +2440,6 @@ return [
                 'edit'  => [
                     'title'    => 'Edit User',
                 ],
-
-                
             ],
 
             'edit'  => [
@@ -2543,7 +2547,6 @@ return [
                     'image-carousel'    => 'Slider Carousel',
                     'footer-links'      => 'Footer Links',
                 ],
-                'add-image-btn'                 => 'Add Image',
             ],
 
             'edit' => [
@@ -2560,6 +2563,7 @@ return [
                 'footer-link'                   => 'Footer Links',
                 'footer-link-form-title'        => 'Footer Link',
                 'slider-description'            => 'Slider related theme customization.',
+                'slider-required'               => 'Slider field is Required.',
                 'slider-add-btn'                => 'Add Slider',
                 'add-image-btn'                 => 'Add Image',
                 'general'                       => 'General',
@@ -2567,8 +2571,6 @@ return [
                 'save-btn'                      => 'Save',
                 'filter-title'                  => 'Title',
                 'sort'                          => 'Sort',
-                'desc'                          => 'Desc',
-                'asc'                           => 'Asc',
                 'limit'                         => 'Limit',
                 'key'                           => 'Key: :key',
                 'value'                         => 'Value: :value',
@@ -2677,7 +2679,7 @@ return [
                 ],
 
                 'products' => [
-                    'info'  => 'Set guest checkout, homepage, product view page, cart view page, store front, review and attribute social share.',
+                    'info'  => 'Set guest checkout, product view page, cart view page, store front, review and attribute social share.',
                     'title' => 'Products',
 
                     'guest-checkout' => [
@@ -3158,11 +3160,24 @@ return [
             ],
 
             'filters' => [
-                'title' => 'Apply Filters',
+                'title'  => 'Apply Filters',
+                'select' => 'Select',
+
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => 'Type atleast 2 characters...',
+                        'no-results'        => 'No result found...',
+                    ],
+                ],
 
                 'custom-filters' => [
                     'title'     => 'Custom Filters',
                     'clear-all' => 'Clear All',
+                ],
+
+                'boolean-options' => [
+                    'true'  => 'True',
+                    'false' => 'False',
                 ],
 
                 'date-options' => [
@@ -3276,6 +3291,7 @@ return [
         'events'                   => 'Events',
         'sitemaps'                 => 'Sitemaps',
         'newsletter-subscriptions' => 'Newsletter Subscriptions',
+        'transactions'             => 'Transactions',
     ],
 
     'errors' => [

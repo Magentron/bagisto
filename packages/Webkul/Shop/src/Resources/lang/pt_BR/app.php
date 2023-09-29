@@ -66,6 +66,7 @@ return [
 
         'account' => [
             'home'      => 'Início',
+
             'profile'   => [
                 'title'                   => 'Perfil',
                 'first-name'              => 'Primeiro Nome',
@@ -256,7 +257,7 @@ return [
                 'delete-all'         => 'Excluir Todos',
                 'empty'              => 'Nenhum produto foi adicionado à página de lista de desejos.',
                 'move-to-cart'       => 'Mover para o Carrinho',
-                'moved-success'      => 'Item movido com sucesso para o carrinho',    
+                'moved-success'      => 'Item movido com sucesso para o carrinho',
                 'moved'              => 'Item movido com sucesso para o carrinho',
                 'page-title'         => 'Lista de Desejos',
                 'profile'            => 'Perfil',
@@ -277,15 +278,15 @@ return [
             'default-content' => 'Conteúdo padrão',
             'default-header'  => 'Cabeçalho padrão',
         ],
-        
+
         'drawer' => [
-           'default-toggle'  => 'Alternar padrão',
+            'default-toggle'  => 'Alternar padrão',
         ],
-        
+
         'media' => [
             'add-attachments' => 'Adicionar anexos',
         ],
-        
+
         'layouts' => [
             'header' => [
                 'title'         => 'Conta',
@@ -344,6 +345,13 @@ return [
             'filters' => [
                 'title' => 'Aplicar Filtros',
 
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => 'Digite pelo menos 2 caracteres...',
+                        'no-results'        => 'Nenhum resultado encontrado...',
+                    ],
+                ],
+
                 'custom-filters' => [
                     'title'     => 'Filtros Personalizados',
                     'clear-all' => 'Limpar Tudo',
@@ -370,7 +378,7 @@ return [
         'modal' => [
             'default-content' => 'Conteúdo padrão',
             'default-header'  => 'Cabeçalho padrão',
-            
+
             'confirm' => [
                 'title'        => 'Você tem certeza?',
                 'message'      => 'Você tem certeza de que deseja realizar esta ação?',
@@ -400,82 +408,89 @@ return [
     ],
 
     'products' => [
-        'reviews'                => 'Avaliações',
-        'add-to-cart'            => 'Adicionar ao Carrinho',
-        'add-to-compare'         => 'Produto adicionado na comparação.',
-        'already-in-compare'     => 'O produto já está na comparação.',
-        'buy-now'                => 'Comprar Agora',
-        'compare'                => 'Comparar',
-        'rating'                 => 'Avaliação',
-        'title'                  => 'Título',
-        'comment'                => 'Comentário',
-        'submit-review'          => 'Enviar Avaliação',
-        'customer-review'        => 'Avaliações de Clientes',
-        'write-a-review'         => 'Escreva uma Avaliação',
-        'stars'                  => 'Estrelas',
-        'share'                  => 'Compartilhar',
-        'empty-review'           => 'Nenhuma avaliação encontrada, seja o primeiro a avaliar este produto',
-        'was-this-helpful'       => 'Esta avaliação foi útil?',
-        'load-more'              => 'Carregar Mais',
-        'add-image'              => 'Adicionar Imagem',
-        'description'            => 'Descrição',
-        'additional-information' => 'Informações Adicionais',
-        'submit-success'         => 'Enviado com sucesso',
-        'something-went-wrong'   => 'Algo deu errado',
-        'in-stock'               => 'Em Estoque',
-        'available-for-order'    => 'Disponível para Pedido',
-        'out-of-stock'           => 'Sem Estoque',
-        'related-product-title'  => 'Produtos Relacionados',
-        'up-sell-title'          => 'Encontramos outros produtos que você pode gostar!',
-        'new'                    => 'Novo',
-        'as-low-as'              => 'A partir de',
-        'starting-at'            => 'Começando em',
-        'name'                   => 'Nome',
-        'qty'                    => 'Quantidade',
-        'offers'                 => 'Compre :qty por :price cada e economize :discount%',
-        'tax-inclusive'          => 'Inclui todos os impostos',
-
-        'sort-by'                => [
-            'title'   => 'Ordenar Por',
-            'options' => [
-                'from-a-z'        => 'De A-Z',
-                'from-z-a'        => 'De Z-A',
-                'latest-first'    => 'Mais Recentes Primeiro',
-                'oldest-first'    => 'Mais Antigos Primeiro',
-                'cheapest-first'  => 'Mais Baratos Primeiro',
-                'expensive-first' => 'Mais Caros Primeiro',
+        'prices' => [
+            'grouped' => [
+                'starting-at' => 'A partir de',
+            ],
+    
+            'configurable' => [
+                'as-low-as' => 'A partir de',
             ],
         ],
-
+    
+        'sort-by' => [
+            'title'   => 'Ordenar por',
+            'options' => [
+                'from-a-z'        => 'De A a Z',
+                'from-z-a'        => 'De Z a A',
+                'latest-first'    => 'Mais recentes primeiro',
+                'oldest-first'    => 'Mais antigos primeiro',
+                'cheapest-first'  => 'Mais baratos primeiro',
+                'expensive-first' => 'Mais caros primeiro',
+            ],
+        ],
+    
         'view' => [
             'type' => [
                 'configurable' => [
                     'select-options'       => 'Por favor, selecione uma opção',
                     'select-above-options' => 'Por favor, selecione as opções acima',
                 ],
-
+    
                 'bundle' => [
                     'none' => 'Nenhum',
                 ],
-
+    
                 'downloadable' => [
                     'samples' => 'Amostras',
                     'links'   => 'Links',
                     'sample'  => 'Amostra',
                 ],
-
+    
                 'grouped' => [
                     'name' => 'Nome',
                 ],
             ],
-
+    
+            'gallery' => [
+                'thumbnail-image' => 'Imagem em miniatura',
+                'product-image'   => 'Imagem do produto',
+            ],
+    
             'reviews' => [
                 'cancel'      => 'Cancelar',
+                'rating'      => 'Classificação',
                 'success'     => 'Avaliação enviada com sucesso.',
                 'attachments' => 'Anexos',
+                'title'       => 'Título',
+                'comment'     => 'Comentário',
+                'customer-review'        => 'Avaliações de Clientes',
+                'submit-review'          => 'Enviar Avaliação',
+                'write-a-review'         => 'Escrever uma Avaliação',
+                'empty-review'           => 'Nenhuma avaliação encontrada, seja o primeiro a avaliar este produto',
+                'load-more'              => 'Carregar Mais',
+                'failed-to-upload'       => 'Falha no envio da imagem',
+            ],
+    
+            'description'            => 'Descrição',
+            'additional-information' => 'Informações Adicionais',
+            'review'                 => 'Avaliações',
+            'related-product-title'  => 'Produtos Relacionados',
+            'up-sell-title'          => 'Encontramos outros produtos que você pode gostar!',
+            'tax-inclusive'          => 'Inclui todos os impostos',
+            'add-to-cart'            => 'Adicionar ao Carrinho',
+            'buy-now'                => 'Comprar Agora',
+            'compare'                => 'Comparar',
+            'add-to-compare'         => 'Produto adicionado para comparação.',
+            'already-in-compare'     => 'Produto já adicionado para comparação.',
+        ],
+    
+        'type' => [
+            'abstract' => [
+                'offers' => 'Compre :qty por :price cada e economize :discount%',
             ],
         ],
-    ],
+    ],    
 
     'categories' => [
         'filters' => [

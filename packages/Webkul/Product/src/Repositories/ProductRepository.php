@@ -214,6 +214,7 @@ class ProductRepository extends Repository
         }
 
         $query = $this->with([
+            'attribute_family',
             'images',
             'videos',
             'attribute_values',
@@ -287,6 +288,10 @@ class ProductRepository extends Repository
                         $qb->where($alias . '.text_value', 'like', '%' . urldecode($params['url_key']) . '%');
                     }
                 } else {
+                    if (is_null($params[$attribute->code])) {
+                        continue;
+                    }
+
                     $qb->where($alias . '.' . $attribute->column_name, 1);
                 }
             }
@@ -430,6 +435,7 @@ class ProductRepository extends Repository
         ]);
 
         $query = $this->with([
+            'attribute_family',
             'images',
             'videos',
             'attribute_values',

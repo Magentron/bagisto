@@ -66,6 +66,7 @@ return [
 
         'account' => [
             'home'      => 'होम',
+
             'profile'   => [
                 'title'                   => 'प्रोफ़ाइल',
                 'first-name'              => 'पहला नाम',
@@ -256,7 +257,7 @@ return [
                 'delete-all'         => 'सभी हटाएं',
                 'empty'              => 'इच्छा सूची पेज पर कोई उत्पाद नहीं जोड़े गए हैं।',
                 'move-to-cart'       => 'कार्ट में डालें',
-                'moved-success'      => 'आइटम सफलतापूर्वक कार्ट में स्थानांतरित हुआ',    
+                'moved-success'      => 'आइटम सफलतापूर्वक कार्ट में स्थानांतरित हुआ',
                 'moved'              => 'आइटम सफलतापूर्वक कार्ट में ले जाया गया',
                 'page-title'         => 'इच्छा सूची',
                 'profile'            => 'प्रोफ़ाइल',
@@ -277,15 +278,15 @@ return [
             'default-content' => 'डिफ़ॉल्ट सामग्री',
             'default-header'  => 'डिफ़ॉल्ट हेडर',
         ],
-        
+
         'drawer' => [
-           'default-toggle'  => 'डिफ़ॉल्ट टॉगल',
+            'default-toggle'  => 'डिफ़ॉल्ट टॉगल',
         ],
-        
+
         'media' => [
             'add-attachments' => 'संलग्न करने के लिए अटैचमेंट जोड़ें',
         ],
-        
+
         'layouts' => [
             'header' => [
                 'title'         => 'खाता',
@@ -344,6 +345,13 @@ return [
             'filters' => [
                 'title' => 'फ़िल्टर लागू करें',
 
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => 'कम से कम 2 अक्षर लिखें...',
+                        'no-results'        => 'कोई परिणाम नहीं मिला...',
+                    ],
+                ],
+
                 'custom-filters' => [
                     'title'     => 'कस्टम फ़िल्टर',
                     'clear-all' => 'सभी हटाएं',
@@ -370,7 +378,7 @@ return [
         'modal' => [
             'default-content' => 'डिफ़ॉल्ट सामग्री',
             'default-header'  => 'डिफ़ॉल्ट हेडर',
-            
+
             'confirm' => [
                 'title'        => 'क्या आपको यकीन है?',
                 'message'      => 'क्या आपको इस क्रिया को करने के लिए यकीन है?',
@@ -399,44 +407,19 @@ return [
         ],
     ],
 
-    'products'  => [
-        'reviews'                => 'समीक्षाएँ',
-        'add-to-cart'            => 'कार्ट में डालें',
-        'add-to-compare'         => 'तुलना सूची में उत्पाद जोड़ा',
-        'already-in-compare'     => 'उत्पाद पहले से ही तुलना सूची में है',
-        'buy-now'                => 'अब खरीदें',
-        'compare'                => 'तुलना करें',
-        'rating'                 => 'रेटिंग',
-        'title'                  => 'शीर्षक',
-        'comment'                => 'टिप्पणी',
-        'submit-review'          => 'समीक्षा सफलतापूर्वक सबमिट करें',
-        'customer-review'        => 'ग्राहक समीक्षा',
-        'write-a-review'         => 'समीक्षा लिखें',
-        'stars'                  => 'स्टार्स',
-        'share'                  => 'शेयर',
-        'empty-review'           => 'कोई समीक्षा नहीं मिली, पहले समीक्षा करें',
-        'was-this-helpful'       => 'क्या यह समीक्षा मददगार थी?',
-        'load-more'              => 'और दिखाएं',
-        'add-image'              => 'छवि जोड़ें',
-        'description'            => 'विवरण',
-        'additional-information' => 'अतिरिक्त जानकारी',
-        'submit-success'         => 'सफलतापूर्वक सबमिट किया गया',
-        'something-went-wrong'   => 'कुछ गड़बड़ हो गई',
-        'in-stock'               => 'स्टॉक में है',
-        'available-for-order'    => 'आर्डर के लिए उपलब्ध है',
-        'out-of-stock'           => 'स्टॉक में नहीं है',
-        'related-product-title'  => 'संबंधित उत्पाद',
-        'up-sell-title'          => 'हमने और उत्पाद पाए हैं जो आपको पसंद आ सकते हैं!',
-        'new'                    => 'नया',
-        'as-low-as'              => 'के रूप में',
-        'starting-at'            => 'से शुरू हो रहा है',
-        'name'                   => 'नाम',
-        'qty'                    => 'मात्रा',
-        'offers'                 => ':qty को :price प्रति प्रति खरीदें और :discount% बचाएं',
-        'tax-inclusive'          => 'सभी करों के साथ',
-
-        'sort-by'                => [
-            'title'   => 'क्रमबद्ध करें',
+    'products' => [
+        'prices' => [
+            'grouped' => [
+                'starting-at' => 'शुरूआत करते हैं',
+            ],
+    
+            'configurable' => [
+                'as-low-as' => 'के रूप में न्यूनतम',
+            ],
+        ],
+    
+        'sort-by' => [
+            'title'   => 'क्रमबद्ध करें द्वारा',
             'options' => [
                 'from-a-z'        => 'ए से जेड तक',
                 'from-z-a'        => 'जेड से ए तक',
@@ -446,36 +429,68 @@ return [
                 'expensive-first' => 'सबसे महंगा पहले',
             ],
         ],
-
+    
         'view' => [
             'type' => [
                 'configurable' => [
                     'select-options'       => 'कृपया एक विकल्प चुनें',
                     'select-above-options' => 'कृपया ऊपर के विकल्प चुनें',
                 ],
-
+    
                 'bundle' => [
                     'none' => 'कोई नहीं',
                 ],
-
+    
                 'downloadable' => [
                     'samples' => 'नमूने',
                     'links'   => 'लिंक्स',
                     'sample'  => 'नमूना',
                 ],
-
+    
                 'grouped' => [
                     'name' => 'नाम',
                 ],
             ],
-
+    
+            'gallery' => [
+                'thumbnail-image' => 'थंबनेल छवि',
+                'product-image'   => 'उत्पाद छवि',
+            ],
+    
             'reviews' => [
                 'cancel'      => 'रद्द करें',
+                'rating'      => 'रेटिंग',
                 'success'     => 'समीक्षा सफलतापूर्वक सबमिट की गई।',
                 'attachments' => 'अटैचमेंट्स',
+                'title'       => 'शीर्षक',
+                'comment'     => 'टिप्पणी',
+                'customer-review'        => 'ग्राहक समीक्षा',
+                'submit-review'          => 'समीक्षा सबमिट करें',
+                'write-a-review'         => 'रिव्यू लिखें',
+                'empty-review'           => 'कोई समीक्षा नहीं मिली, पहले से सबसे पहले इस उत्पाद की समीक्षा करें',
+                'load-more'              => 'और लोड करें',
+                'failed-to-upload'       => 'छवि अपलोड करने में विफल हुआ',
+            ],
+    
+            'description'            => 'विवरण',
+            'additional-information' => 'अतिरिक्त जानकारी',
+            'review'                 => 'समीक्षा',
+            'related-product-title'  => 'संबंधित उत्पाद',
+            'up-sell-title'          => 'हमने और उत्पाद ढूंढा है जो आपको पसंद आ सकते हैं!',
+            'tax-inclusive'          => 'सभी करों के साथ',
+            'add-to-cart'            => 'कार्ट में डालें',
+            'buy-now'                => 'अब खरीदें',
+            'compare'                => 'तुलना करें',
+            'add-to-compare'         => 'तुलना में उत्पाद जोड़ दिया गया है।',
+            'already-in-compare'     => 'उत्पाद पहले से ही तुलना में जोड़ा गया है।',
+        ],
+    
+        'type' => [
+            'abstract' => [
+                'offers' => ':qty खरीदें :price प्रति प्रति और :discount% बचाएं',
             ],
         ],
-    ],
+    ],    
 
     'categories' => [
         'filters' => [

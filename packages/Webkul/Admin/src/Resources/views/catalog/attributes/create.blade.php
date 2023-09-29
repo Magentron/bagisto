@@ -23,7 +23,7 @@
             >
                 <!-- actions buttons -->
                 <div class="flex justify-between items-center">
-                    <p class="text-[20px] text-gray-800 font-bold">
+                    <p class="text-[20px] text-gray-800 dark:text-white font-bold">
                         @lang('admin::app.catalog.attributes.create.title')
                     </p>
         
@@ -31,7 +31,7 @@
                         <!-- Cancel Button -->
                         <a
                             href="{{ route('admin.catalog.attributes.index') }}"
-                            class="transparent-button hover:bg-gray-200"
+                            class="transparent-button hover:bg-gray-200 dark:hover:bg-gray-800 dark:text-white "
                         >
                             @lang('admin::app.catalog.attributes.create.back-btn')
                         </a>
@@ -51,8 +51,8 @@
                     <!-- Left sub Component -->
                     <div class="flex flex-col gap-[8px] flex-1">
                         <!-- Label -->
-                        <div class="p-[16px] bg-white box-shadow rounded-[4px]">
-                            <p class="mb-[16px] text-[16px] text-gray-800 font-semibold">
+                        <div class="p-[16px] bg-white dark:bg-gray-900  box-shadow rounded-[4px]">
+                            <p class="mb-[16px] text-[16px] text-gray-800 dark:text-white font-semibold">
                                 @lang('admin::app.catalog.attributes.create.label')
                             </p>
 
@@ -88,7 +88,7 @@
                                     <x-admin::form.control-group.control
                                         type="text"
                                         :name="$locale->code . '[name]'"
-                                        :value="old($locale->code)"
+                                        :value="old($locale->code . '[name]')"
                                         :placeholder="$locale->name"
                                     >
                                     </x-admin::form.control-group.control>
@@ -103,7 +103,7 @@
 
                         <!-- Options -->
                         <div 
-                            class="p-[16px] bg-white box-shadow rounded-[4px]"
+                            class="p-[16px] bg-white dark:bg-gray-900  box-shadow rounded-[4px]"
                             v-if="swatchAttribute && (
                                     attributeType == 'select' 
                                     || attributeType == 'multiselect' 
@@ -112,7 +112,7 @@
                                 )"
                         >
                             <div class="flex justify-between items-center mb-3">
-                                <p class="mb-[16px] text-[16px] text-gray-800 font-semibold">
+                                <p class="mb-[16px] text-[16px] text-gray-800 dark:text-white font-semibold">
                                     @lang('admin::app.catalog.attributes.create.title')
                                 </p>
 
@@ -141,11 +141,6 @@
                                             v-model="swatchType"
                                             @change="showSwatch=true"
                                         >
-                                            <!-- Default Option -->
-                                            <option value="">
-                                                @lang('admin::app.catalog.attributes.create.select')
-                                            </option>
-
                                             @foreach (['dropdown', 'color', 'image', 'text'] as $type)
                                                 <option value="{{ $type }}">
                                                     @lang('admin::app.catalog.attributes.create.option.' . $type)
@@ -185,7 +180,7 @@
 
                                             <label
                                                 for="empty_option"
-                                                class="text-[14px] text-gray-600 font-semibold cursor-pointer"
+                                                class="text-[14px] text-gray-600 dark:text-gray-300 font-semibold cursor-pointer"
                                             >
                                                 @lang('admin::app.catalog.attributes.create.create-empty-option')
                                             </label>
@@ -215,12 +210,7 @@
                                                     <x-admin::table.th>
                                                         {{ $locale->name . ' (' . $locale->code . ')' }}
                                                     </x-admin::table.th>
-                                                @endforeach                                
-
-                                                <!-- Positions tables heading -->
-                                                <x-admin::table.th>
-                                                    @lang('admin::app.catalog.attributes.create.position')
-                                                </x-admin::table.th>
+                                                @endforeach
 
                                                 <!-- Action tables heading -->
                                                 <x-admin::table.th></x-admin::table.th>
@@ -255,7 +245,7 @@
                                                             <img 
                                                                 src="{{ bagisto_asset('images/product-placeholders/front.svg') }}"
                                                                 :ref="'image_' + element.params.id"
-                                                                class="h-[50px] w-[50px]"
+                                                                class="h-[50px] w-[50px] dark:invert dark:mix-blend-exclusion"
                                                             />
 
                                                             <input
@@ -303,27 +293,16 @@
                                                         />
                                                     </x-admin::table.td>
 
-                                                    <!-- Position Loacle -->
-                                                    <x-admin::table.td>
-                                                        <p v-text="element.params.sort_order"></p>
-
-                                                        <input
-                                                            type="hidden"
-                                                            :name="'options[' + element.id + '][sort_order]'"
-                                                            v-model="element.params.sort_order"
-                                                        />
-                                                    </x-admin::table.td>
-
                                                     <!-- Actions button -->
                                                     <x-admin::table.td class="!px-0">
                                                         <span
-                                                            class="icon-edit p-[6px] rounded-[6px] text-[24px] cursor-pointer transition-all hover:bg-gray-100 max-sm:place-self-center"
+                                                            class="icon-edit p-[6px] rounded-[6px] text-[24px] cursor-pointer transition-all hover:bg-gray-100 dark:hover:bg-gray-950  max-sm:place-self-center"
                                                             @click="editModal(element)"
                                                         >
                                                         </span> 
 
                                                         <span
-                                                            class="icon-delete p-[6px] rounded-[6px] text-[24px] cursor-pointer transition-all hover:bg-gray-100 max-sm:place-self-center"
+                                                            class="icon-delete p-[6px] rounded-[6px] text-[24px] cursor-pointer transition-all hover:bg-gray-100 dark:hover:bg-gray-950  max-sm:place-self-center"
                                                             @click="removeOption(element.id)"
                                                         >
                                                         </span> 
@@ -371,9 +350,9 @@
                     <!-- Right sub-component -->
                     <div class="flex flex-col gap-[8px] w-[360px] max-w-full">
                         <!-- General -->
-                        <div class="bg-white box-shadow rounded-[4px]">
+                        <div class="bg-white dark:bg-gray-900  box-shadow rounded-[4px]">
                             <div class="flex justify-between items-center p-[6px]">
-                                <p class="p-[10px] text-gray-600 text-[16px] font-semibold">
+                                <p class="p-[10px] text-gray-800 dark:text-white text-[16px] font-semibold">
                                     @lang('admin::app.catalog.attributes.create.general')
                                 </p>
                             </div>
@@ -399,7 +378,7 @@
                                             id="code"
                                             v-bind="field"
                                             :class="[errors['{{ 'code' }}'] ? 'border border-red-600 hover:border-red-600' : '']"
-                                            class="flex w-full min-h-[39px] py-2 px-3 border rounded-[6px] text-[14px] text-gray-600 transition-all hover:border-gray-400 focus:border-gray-400"
+                                            class="flex w-full min-h-[39px] py-2 px-3 border rounded-[6px] text-[14px] text-gray-600 dark:text-gray-300 transition-all hover:border-gray-400 dark:hover:border-gray-400 dark:focus:border-gray-400 focus:border-gray-400 dark:bg-gray-900 dark:border-gray-800"
                                             placeholder="{{ trans('admin::app.catalog.attributes.create.code') }}"
                                             v-code
                                         >
@@ -428,14 +407,12 @@
                                         v-model="attributeType"
                                         @change="swatchAttribute=true"
                                     >
-                                        <!-- Default Option -->
-                                        <option value="">
-                                            @lang('admin::app.catalog.attributes.create.select')
-                                        </option>
-
                                         <!-- Here! All Needed types are defined -->
                                         @foreach(['text', 'textarea', 'price', 'boolean', 'select', 'multiselect', 'datetime', 'date', 'image', 'file', 'checkbox'] as $type)
-                                            <option value="{{ $type }}">
+                                            <option
+                                                value="{{ $type }}"
+                                                {{ $type === 'text' ? "selected" : '' }}
+                                            >
                                                 @lang('admin::app.catalog.attributes.create.'. $type)
                                             </option>
                                         @endforeach
@@ -481,7 +458,7 @@
                         <!-- Validations -->
                         <x-admin::accordion>
                             <x-slot:header>
-                                <p class="p-[10px] text-gray-600 text-[16px] font-semibold">
+                                <p class="p-[10px] text-gray-800 dark:text-white text-[16px] font-semibold">
                                     @lang('admin::app.catalog.attributes.create.validations')
                                 </p>
                             </x-slot:header>
@@ -507,11 +484,6 @@
                                         v-model="validationType"
                                         @change="inputValidation=true"
                                     >
-                                        <!-- Default Option -->
-                                        <option value="">
-                                            @lang('admin::app.catalog.attributes.create.select')
-                                        </option>
-
                                         <!-- Here! All Needed types are defined -->
                                         @foreach(['number', 'email', 'decimal', 'url', 'regex'] as $type)
                                             <option value="{{ $type }}">
@@ -562,7 +534,7 @@
 
                                     <x-admin::form.control-group.label
                                         for="is_required"
-                                        class="!text-[14px] !font-semibold !text-gray-600 cursor-pointer"
+                                        class="!text-[14px] !font-semibold !text-gray-600 dark:!text-gray-300 cursor-pointer"
                                     >
                                         @lang('admin::app.catalog.attributes.edit.is-required')
                                     </x-admin::form.control-group.label>
@@ -581,7 +553,7 @@
 
                                     <x-admin::form.control-group.label
                                         for="is_unique"
-                                        class="!text-[14px] !font-semibold !text-gray-600 cursor-pointer"
+                                        class="!text-[14px] !font-semibold !text-gray-600 dark:!text-gray-300 cursor-pointer"
                                     >
                                         @lang('admin::app.catalog.attributes.edit.is-unique')
                                     </x-admin::form.control-group.label>
@@ -592,7 +564,7 @@
                         <!-- Configurations -->
                         <x-admin::accordion>
                             <x-slot:header>
-                                <p class="p-[10px] text-gray-600 text-[16px] font-semibold">
+                                <p class="p-[10px] text-gray-800 dark:text-white text-[16px] font-semibold">
                                     @lang('admin::app.catalog.attributes.create.configuration')
                                 </p>
                             </x-slot:header>
@@ -611,7 +583,7 @@
 
                                     <x-admin::form.control-group.label
                                         for="value_per_locale"
-                                        class="!text-[14px] !font-semibold !text-gray-600 cursor-pointer"
+                                        class="!text-[14px] !font-semibold !text-gray-600 dark:!text-gray-300 cursor-pointer"
                                     >
                                         @lang('admin::app.catalog.attributes.edit.value-per-locale')
                                     </x-admin::form.control-group.label>
@@ -630,7 +602,7 @@
 
                                     <x-admin::form.control-group.label
                                         for="value_per_channel"
-                                        class="!text-[14px] !font-semibold !text-gray-600 cursor-pointer"
+                                        class="!text-[14px] !font-semibold !text-gray-600 dark:!text-gray-300 cursor-pointer"
                                     >
                                         @lang('admin::app.catalog.attributes.edit.value-per-channel')
                                     </x-admin::form.control-group.label>
@@ -649,7 +621,7 @@
 
                                     <x-admin::form.control-group.label
                                         for="is_configurable"
-                                        class="!text-[14px] !font-semibold !text-gray-600 cursor-pointer"
+                                        class="!text-[14px] !font-semibold !text-gray-600 dark:!text-gray-300 cursor-pointer"
                                     >
                                         @lang('admin::app.catalog.attributes.edit.is-configurable')
                                     </x-admin::form.control-group.label>
@@ -668,7 +640,7 @@
 
                                     <x-admin::form.control-group.label
                                         for="is_visible_on_front"
-                                        class="!text-[14px] !font-semibold !text-gray-600 cursor-pointer"
+                                        class="!text-[14px] !font-semibold !text-gray-600 dark:!text-gray-300 cursor-pointer"
                                     >
                                         @lang('admin::app.catalog.attributes.edit.is-visible-on-front')
                                     </x-admin::form.control-group.label>
@@ -687,7 +659,7 @@
 
                                     <x-admin::form.control-group.label
                                         for="is_comparable"
-                                        class="!text-[14px] !font-semibold !text-gray-600 cursor-pointer"
+                                        class="!text-[14px] !font-semibold !text-gray-600 dark:!text-gray-300 cursor-pointer"
                                     >
                                         @lang('admin::app.catalog.attributes.edit.is-comparable')
                                     </x-admin::form.control-group.label>
@@ -712,7 +684,7 @@
             
                                     <span class="icon-uncheckbox rounded-[6px] text-[24px] cursor-pointer peer-checked:icon-checked peer-checked:text-blue-600"></span>
 
-                                    <div class="text-[14px] text-gray-600 font-semibold cursor-pointer">
+                                    <div class="text-[14px] text-gray-600 dark:text-gray-300 font-semibold cursor-pointer">
                                         @lang('admin::app.catalog.attributes.create.is-filterable')
                                     </div>
                                 </label>
@@ -737,7 +709,7 @@
                         ref="addOptionsRow"
                     >
                         <x-slot:header>
-                            <p class="text-[18px] text-gray-800 font-bold">
+                            <p class="text-[18px] text-gray-800 dark:text-white font-bold">
                                 @lang('admin::app.catalog.attributes.create.add-option')
                             </p>
                         </x-slot:header>
@@ -789,7 +761,7 @@
                                 </x-admin::form.control-group>
                             </div>
 
-                            <div class="grid grid-cols-3 gap-[16px] px-[16px] py-[10px] border-b-[1px] border-gray-300">
+                            <div class="grid grid-cols-3 gap-[16px] px-[16px] py-[10px] border-b-[1px] dark:border-gray-800  ">
                                 <!-- Hidden Id Input -->
                                 <x-admin::form.control-group.control
                                     type="hidden"
@@ -840,27 +812,6 @@
                                         </x-admin::form.control-group.error>
                                     </x-admin::form.control-group>
                                 @endforeach
-
-                                <!-- Position Input -->
-                                <x-admin::form.control-group class="w-full mb-[10px]">
-                                    <x-admin::form.control-group.label ::class="{ 'required' : ! isNullOptionChecked }">
-                                        @lang('admin::app.catalog.attributes.create.position')
-                                    </x-admin::form.control-group.label>
-
-                                    <x-admin::form.control-group.control
-                                        type="number"
-                                        name="sort_order"
-                                        ::rules="{ 'required' : ! isNullOptionChecked }"
-                                        :label="trans('admin::app.catalog.attributes.create.position')"
-                                        :placeholder="trans('admin::app.catalog.attributes.create.position')"
-                                    >
-                                    </x-admin::form.control-group.control>
-        
-                                    <x-admin::form.control-group.error
-                                        control-name="sort_order"
-                                    >
-                                    </x-admin::form.control-group.error>
-                                </x-admin::form.control-group>
                             </div>
                         </x-slot:content>
                         

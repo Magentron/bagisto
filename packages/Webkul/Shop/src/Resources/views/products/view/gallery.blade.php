@@ -11,6 +11,9 @@
                     :class="`min-w-[100px] max-h-[100px] rounded-[12px] ${ hover ? 'cursor-pointer' : '' }`" 
                     v-for="image in media.images"
                     :src="image.small_image_url"
+                    alt="@lang('shop::app.products.view.gallery.thumbnail-image')"
+                    width="100"
+                    height="100"
                     @mouseover="change(image)"
                 />
 
@@ -29,20 +32,23 @@
             
             <!-- Media shimmer Effect -->
             <div
-                class="max-h-[609px] max-w-[560px]"
+                class="max-w-[560px] max-h-[609px]"
                 v-show="isMediaLoading"
             >
                 <div class="min-w-[560px] min-h-[607px] bg-[#E9E9E9] rounded-[12px] shimmer"></div>
             </div>
 
             <div
-                class="max-h-[609px] max-w-[560px]"
+                class="max-w-[560px] max-h-[609px]"
                 v-show="! isMediaLoading"
             >
                 <img 
                     class="min-w-[450px] rounded-[12px]" 
                     :src="baseFile.path" 
                     v-if="baseFile.type == 'image'"
+                    alt="@lang('shop::app.products.view.gallery.product-image')"
+                    width="560"
+                    height="609"
                     @load="onMediaLoad()"
                 />
 
@@ -98,6 +104,18 @@
 
                     hover: false,
                 }
+            },
+
+            watch: {
+                'media.images': {
+                    deep: true,
+
+                    handler(newImages, oldImages) {
+                        if (JSON.stringify(newImages) !== JSON.stringify(oldImages)) {
+                            this.baseFile.path = newImages[0].large_image_url; 
+                        }
+                    },
+                },
             },
 
             mounted() {

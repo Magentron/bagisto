@@ -156,6 +156,7 @@ return [
                     'status'           => 'Status',
                     'success'          => 'Sucesso',
                     'view'             => 'Visualizar',
+                    'product-count'    => ':count + Mais produtos'
                 ],
             ],
 
@@ -175,7 +176,6 @@ return [
                 'comment-success'       => 'Comentário adicionado com sucesso.',
                 'create-success'        => 'Pedido criado com sucesso',
                 'cancel-success'        => 'Pedido cancelado com sucesso',
-                'create-invoice'        => 'Criar Fatura',
                 'discount'              => 'Desconto - :discount',
                 'download-pdf'          => 'Baixar PDF',
                 'grand-total'           => 'Total Geral - :grand_total',
@@ -185,7 +185,6 @@ return [
                 'item-shipped'          => 'Enviado (:qty_shipped)',
                 'item-canceled'         => 'Cancelado (:qty_canceled)',
                 'item-refunded'         => 'Reembolsado (:qty_refunded)',
-                'invoice'               => 'Fatura',
                 'invoice-id'            => 'Fatura #:invoice',
                 'invoices'              => 'Faturas',
                 'notify-customer'       => 'Notificar Cliente',
@@ -193,7 +192,6 @@ return [
                 'no-shipment-found'     => 'Nenhuma Remessa Encontrada',
                 'name'                  => 'Nome',
                 'no-refund-found'       => 'Nenhum Reembolso Encontrado',
-                'new-invoice'           => 'Nova Fatura',
                 'order-date'            => 'Data do Pedido',
                 'order-status'          => 'Status do Pedido',
                 'order-information'     => 'Informações do Pedido',
@@ -202,7 +200,6 @@ return [
                 'payment-method'        => 'Método de Pagamento',
                 'per-unit'              => 'Por Unidade',
                 'quantity'              => 'Quantidade',
-                'qty-to-invoiced'       => 'Qtde. para Faturar',
                 'refunded'              => 'Reembolsado',
                 'refund-id'             => 'Reembolso #:refund',
                 'refund'                => 'Reembolso',
@@ -423,10 +420,17 @@ return [
             ],
 
             'create' => [
-                'creation-error' => 'A criação da fatura do pedido não é permitida.',
-                'create-success' => 'Fatura criada com sucesso',
-                'invalid-qty'    => 'Encontramos uma quantidade inválida para faturar itens.',
-                'product-error'  => 'A fatura não pode ser criada sem produtos.',
+                'invoice'         => 'Fatura',
+                'create-invoice'  => 'Criar Fatura',
+                'new-invoice'     => 'Nova Fatura',
+                'product-image'   => 'Imagem do Produto',
+                'amount-per-unit' => ':amount Por Unidade x :qty Quantidade',
+                'sku'             => 'SKU - :sku',
+                'qty-to-invoiced' => 'Quantidade a faturar',
+                'creation-error'  => 'A criação da fatura do pedido não é permitida.',
+                'create-success'  => 'Fatura criada com sucesso',
+                'invalid-qty'     => 'Encontramos uma quantidade inválida para itens a faturar.',
+                'product-error'   => 'Não é possível criar uma fatura sem produtos.',
             ],
 
             'invoice-pdf' => [
@@ -655,7 +659,7 @@ return [
                             'sku'             => 'SKU',
                             'status'          => 'Status',
                             'weight'          => 'Peso',
-                            'images'         => 'Imagens',
+                            'images'          => 'Imagens',
                         ],
 
                         'mass-edit' => [
@@ -673,22 +677,24 @@ return [
                     ],
 
                     'grouped' => [
-                        'add-btn'     => 'Adicionar Produto',
-                        'delete'      => 'Excluir',
-                        'default-qty' => 'Quantidade Padrão',
-                        'empty-title' => 'Adicionar Produto',
-                        'empty-info'  => 'Para criar várias combinações de produtos rapidamente.',
-                        'info'        => 'Um produto agrupado consiste em itens independentes apresentados como um conjunto, permitindo variações ou coordenação por temporada ou tema. Cada produto pode ser comprado individualmente ou como parte do grupo.',
-                        'sku'         => 'SKU - :sku',
-                        'title'       => 'Produtos Agrupados',
+                        'add-btn'           => 'Adicionar Produto',
+                        'delete'            => 'Excluir',
+                        'default-qty'       => 'Quantidade Padrão',
+                        'empty-title'       => 'Adicionar Produto',
+                        'empty-info'        => 'Para criar várias combinações de produtos rapidamente.',
+                        'image-placeholder' => 'Imagem do Produto',
+                        'info'              => 'Um produto agrupado consiste em itens independentes apresentados como um conjunto, permitindo variações ou coordenação por temporada ou tema. Cada produto pode ser comprado individualmente ou como parte do grupo.',
+                        'sku'               => 'SKU - :sku',
+                        'title'             => 'Produtos Agrupados',
                     ],
 
                     'bundle' => [
-                        'add-btn'     => 'Adicionar Opção',
-                        'empty-title' => 'Adicionar Opção',
-                        'empty-info'  => 'Para criar opções de pacotes rapidamente.',
-                        'info'        => 'Um produto de pacote é um pacote de vários itens ou serviços vendidos juntos a um preço especial, proporcionando valor e conveniência aos clientes.',
-                        'title'       => 'Itens de Pacote',
+                        'add-btn'           => 'Adicionar Opção',
+                        'empty-title'       => 'Adicionar Opção',
+                        'empty-info'        => 'Para criar opções de pacotes rapidamente.',
+                        'image-placeholder' => 'Imagem do Produto',
+                        'info'              => 'Um produto de pacote é um pacote de vários itens ou serviços vendidos juntos a um preço especial, proporcionando valor e conveniência aos clientes.',
+                        'title'             => 'Itens de Pacote',
 
                         'update-create' => [
                             'checkbox'    => 'Caixa de Seleção',
@@ -2458,7 +2464,7 @@ return [
             'delete-warning'     => 'Tem certeza de que deseja realizar esta ação?',
             'login-error'        => 'Verifique suas credenciais e tente novamente.',
             'activate-warning'   => 'Sua conta ainda não foi ativada, entre em contato com o administrador.',
-            'last-delete-error'  => 'Falha ao excluir o último usuário.'
+            'last-delete-error'  => 'Falha ao excluir o último usuário.',
         ],
 
         'roles' => [
@@ -2557,6 +2563,7 @@ return [
                 'footer-link'                   => 'Links no Rodapé',
                 'footer-link-form-title'        => 'Link no Rodapé',
                 'slider-description'            => 'Personalização relacionada a slides.',
+                'slider-required'               => 'Campo do slider é obrigatório.',
                 'slider-add-btn'                => 'Adicionar Slide',
                 'general'                       => 'Geral',
                 'add-filter-btn'                => 'Adicionar Filtro',
@@ -2564,8 +2571,6 @@ return [
                 'save-btn'                      => 'Salvar',
                 'filter-title'                  => 'Título',
                 'sort'                          => 'Ordenar',
-                'desc'                          => 'Descendente',
-                'asc'                           => 'Ascendente',
                 'limit'                         => 'Limite',
                 'key'                           => 'Chave: :key',
                 'value'                         => 'Valor: :value',
@@ -2674,7 +2679,7 @@ return [
                 ],
 
                 'products' => [
-                    'info'  => 'Defina checkout de convidado, página inicial, página de visualização de produtos, página de visualização do carrinho, loja, revisão e compartilhamento social de atributos.',
+                    'info'  => 'Configure o checkout de convidado, página de visualização de produtos, página de visualização de carrinho, frente de loja, revisão e compartilhamento social de atributos.',
                     'title' => 'Produtos',
 
                     'guest-checkout' => [
@@ -3155,11 +3160,24 @@ return [
             ],
 
             'filters' => [
-                'title' => 'Appliquer des filtres',
+                'title'  => 'Appliquer des filtres',
+                'select' => 'Selecionar.',
+
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => 'Digite pelo menos 2 caracteres...',
+                        'no-results'        => 'Nenhum resultado encontrado...',
+                    ],
+                ],
 
                 'custom-filters' => [
                     'title'     => 'Filtres personnalisés',
                     'clear-all' => 'Effacer tout',
+                ],
+
+                'boolean-options' => [
+                    'true'  => 'Verdadeiro',
+                    'false' => 'Falso',
                 ],
 
                 'date-options' => [
@@ -3273,6 +3291,7 @@ return [
         'events'                   => 'Événements',
         'sitemaps'                 => 'Sitemaps',
         'newsletter-subscriptions' => 'Abonnements à la newsletter',
+        'transactions'             => 'Transações',
     ],
 
     'errors' => [

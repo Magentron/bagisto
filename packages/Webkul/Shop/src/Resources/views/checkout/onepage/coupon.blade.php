@@ -56,7 +56,7 @@
     
                                     <div class="p-[30px] bg-white mt-[20px]">
                                         <div class="flex justify-between items-center gap-[15px] flex-wrap">
-                                            <p class="text-[14px] font-medium text-[#7D7D7D]">
+                                            <p class="text-[14px] font-medium text-[#6E6E6E]">
                                                 @lang('shop::app.checkout.onepage.coupon.sub-total')
                                             </p>
 
@@ -123,7 +123,7 @@
             },
 
             methods: {
-                applyCoupon(params) {
+                applyCoupon(params, { resetForm }) {
                     this.$axios.post("{{ route('shop.api.checkout.cart.coupon.apply') }}", params)
                         .then((response) => {
                             this.$parent.$parent.getOrderSummary();
@@ -131,6 +131,8 @@
                             this.$emitter.emit('add-flash', { type: 'success', message: response.data.message });
 
                             this.$refs.couponModel.toggle();
+
+                            resetForm();
                         })
                         .catch((error) => {
                             if ([400, 422].includes(error.response.request.status)) {

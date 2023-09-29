@@ -71,11 +71,11 @@
 
             <x-shop::tabs.item
                 class="container mt-[60px] !p-0 max-1180:hidden"
-                :title="trans('shop::app.products.description')"
+                :title="trans('shop::app.products.view.description')"
                 :is-selected="true"
             >
                 <div class="container mt-[60px] max-1180:px-[20px]">
-                    <p class="text-[#7D7D7D] text-[18px] max-1180:text-[14px]">
+                    <p class="text-[#6E6E6E] text-[18px] max-1180:text-[14px]">
                         {!! $product->description !!}
                     </p>
                 </div>
@@ -87,15 +87,15 @@
             {{-- Additional Information Tab --}}
             <x-shop::tabs.item
                 class="container mt-[60px] !p-0 max-1180:hidden"
-                :title="trans('shop::app.products.additional-information')"
+                :title="trans('shop::app.products.view.additional-information')"
                 :is-selected="false"
             >
                 <div class="container mt-[60px] max-1180:px-[20px]">
-                    <p class="text-[#7D7D7D] text-[18px] max-1180:text-[14px]">
+                    <div class="grid gap-[15px] grid-cols-[auto_1fr] max-w-max mt-[30px]">
                         @foreach ($customAttributeValues as $customAttributeValue)
                             <div class="grid">
                                 <p class="text-[16px] text-black">
-                                    {{ $customAttributeValue['label'] }}
+                                    {!! $customAttributeValue['label'] !!}
                                 </p>
                             </div>
 
@@ -125,19 +125,19 @@
                             @else 
                                 <div class="grid">
                                     <p class="text-[16px] text-[#7D7D7D]">
-                                        {{ $customAttributeValue['value'] ? $customAttributeValue['value'] : '-' }}
+                                        {!! $customAttributeValue['value'] ? $customAttributeValue['value'] : '-' !!}
                                     </p>
                                 </div>
                             @endif
                         @endforeach
-                    </p>
+                    </div>
                 </div>
             </x-shop::tabs.item>
 
             {{-- Reviews Tab --}}
             <x-shop::tabs.item
                 class="container mt-[60px] !p-0 max-1180:hidden"
-                :title="trans('shop::app.products.reviews')"
+                :title="trans('shop::app.products.view.review')"
                 :is-selected="false"
             >
                 @include('shop::products.view.reviews')
@@ -152,13 +152,13 @@
             <x-slot:header>
                 <div class="flex justify-between mb-[20px] mt-[20px]">
                     <p class="text-[16px] font-medium 1180:hidden">
-                        @lang('shop::app.products.description')
+                        @lang('shop::app.products.view.description')
                     </p>
                 </div>
             </x-slot:header>
 
             <x-slot:content>
-                <p class="text-[#7D7D7D] text-[18px] max-1180:text-[14px] mb-[20px]">
+                <p class="text-[#6E6E6E] text-[18px] max-1180:text-[14px] mb-[20px]">
                     {!! $product->description !!}
                 </p>
             </x-slot:content>
@@ -169,14 +169,14 @@
             <x-slot:header>
                 <div class="flex justify-between mb-[20px] mt-[20px]">
                     <p class="text-[16px] font-medium 1180:hidden">
-                        @lang('shop::app.products.additional-information')
+                        @lang('shop::app.products.view.additional-information')
                     </p>
                 </div>
             </x-slot:header>
 
             <x-slot:content>
                 <div class="container mt-[20px] mb-[20px] max-1180:px-[20px]">
-                    <p class="text-[#7D7D7D] text-[18px] max-1180:text-[14px]">
+                    <p class="text-[#6E6E6E] text-[18px] max-1180:text-[14px]">
                         @foreach ($customAttributeValues as $customAttributeValue)
                             <div class="grid">
                                 <p class="text-[16px] text-black">
@@ -198,7 +198,7 @@
                                 </a>
                             @else 
                                 <div class="grid">
-                                    <p class="text-[16px] text-[#7D7D7D]">
+                                    <p class="text-[16px] text-[#6E6E6E]">
                                         {{ $customAttributeValue['value'] ?? '-' }}
                                     </p>
                                 </div>
@@ -214,7 +214,7 @@
             <x-slot:header>
                 <div class="flex justify-between mb-[20px] mt-[20px]">
                     <p class="text-[16px] font-medium 1180:hidden">
-                        @lang('shop::app.products.reviews')
+                        @lang('shop::app.products.view.review')
                     </p>
                 </div>
             </x-slot:header>
@@ -227,14 +227,14 @@
 
     {{-- Featured Products --}}
     <x-shop::products.carousel
-        :title="trans('shop::app.products.related-product-title')"
+        :title="trans('shop::app.products.view.related-product-title')"
         :src="route('shop.api.products.related.index', ['id' => $product->id])"
     >
     </x-shop::products.carousel>
 
     {{-- Upsell Products --}}
     <x-shop::products.carousel
-        :title="trans('shop::app.products.up-sell-title')"
+        :title="trans('shop::app.products.view.up-sell-title')"
         :src="route('shop.api.products.up-sell.index', ['id' => $product->id])"
     >
     </x-shop::products.carousel>
@@ -306,7 +306,7 @@
                                     </x-shop::products.star-rating>
 
                                     <div class="flex gap-[15px] items-center">
-                                        <p class="text-[#7D7D7D] text-[14px]">
+                                        <p class="text-[#6E6E6E] text-[14px]">
                                             ({{ $product->approvedReviews->count() }} @lang('reviews'))
                                         </p>
                                     </div>
@@ -320,12 +320,12 @@
                                 <p class="flex gap-2.5 items-center mt-[25px] text-[24px] !font-medium max-sm:mt-[15px] max-sm:text-[18px]">
                                     {!! $product->getTypeInstance()->getPriceHtml() !!}
 
-                                    <span class="text-[18px] text-[#7D7D7D]">
+                                    <span class="text-[18px] text-[#6E6E6E]">
                                         @if (
                                             (bool) core()->getConfigData('taxes.catalogue.pricing.tax_inclusive') 
                                             && $product->getTypeInstance()->getTaxCategory()
                                         )
-                                            @lang('shop::app.products.tax-inclusive')
+                                            @lang('shop::app.products.view.tax-inclusive')
                                         @endif
                                     </span>
                                 </p>
@@ -334,7 +334,7 @@
 
                                 {!! view_render_event('bagisto.shop.products.short_description.before', ['product' => $product]) !!}
 
-                                <p class="mt-[25px] text-[18px] text-[#7D7D7D] max-sm:text-[14px] max-sm:mt-[15px]">
+                                <p class="mt-[25px] text-[18px] text-[#6E6E6E] max-sm:text-[14px] max-sm:mt-[15px]">
                                     {!! $product->short_description !!}
                                 </p>
 
@@ -373,7 +373,7 @@
                                         class="secondary-button w-full max-w-full"
                                         {{ ! $product->isSaleable(1) ? 'disabled' : '' }}
                                     >
-                                        @lang('shop::app.products.add-to-cart')
+                                        @lang('shop::app.products.view.add-to-cart')
                                     </button>
 
                                     {!! view_render_event('bagisto.shop.products.view.add_to_cart.after', ['product' => $product]) !!}
@@ -389,7 +389,7 @@
                                         @click="is_buy_now=1;"
                                         {{ ! $product->isSaleable(1) ? 'disabled' : '' }}
                                     >
-                                        @lang('shop::app.products.buy-now')
+                                        @lang('shop::app.products.view.buy-now')
                                     </button>
                                 @endif
 
@@ -406,7 +406,7 @@
                                         @if (core()->getConfigData('general.content.shop.compare_option'))
                                             <span class="icon-compare text-[24px]"></span>
 
-                                            @lang('shop::app.products.compare')
+                                            @lang('shop::app.products.view.compare')
                                         @endif
                                     </div>
 
@@ -511,14 +511,14 @@
 
                                 this.setStorageValue(this.getCompareItemsStorageKey(), existingItems);
 
-                                this.$emitter.emit('add-flash', { type: 'success', message: "@lang('shop::app.products.add-to-compare')" });
+                                this.$emitter.emit('add-flash', { type: 'success', message: "@lang('shop::app.products.view.add-to-compare')" });
                             } else {
-                                this.$emitter.emit('add-flash', { type: 'warning', message: "@lang('shop::app.products.already-in-compare')" });
+                                this.$emitter.emit('add-flash', { type: 'warning', message: "@lang('shop::app.products.view.already-in-compare')" });
                             }
                         } else {
                             this.setStorageValue(this.getCompareItemsStorageKey(), [productId]);
 
-                            this.$emitter.emit('add-flash', { type: 'success', message: "@lang('shop::app.products.add-to-compare')" });
+                            this.$emitter.emit('add-flash', { type: 'success', message: "@lang('shop::app.products.view.add-to-compare')" });
                         }
                     },
 

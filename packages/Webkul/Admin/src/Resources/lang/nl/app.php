@@ -156,6 +156,7 @@ return [
                     'status'           => 'Status',
                     'success'          => 'Succes',
                     'view'             => 'Bekijken',
+                    'product-count'    => ':count + Meer producten'
                 ],
             ],
 
@@ -175,7 +176,6 @@ return [
                 'comment-success'       => 'Opmerking succesvol toegevoegd.',
                 'create-success'        => 'Bestelling succesvol aangemaakt',
                 'cancel-success'        => 'Bestelling succesvol geannuleerd',
-                'create-invoice'        => 'Factuur aanmaken',
                 'discount'              => 'Korting - :discount',
                 'download-pdf'          => 'PDF Downloaden',
                 'grand-total'           => 'Totaalbedrag - :grand_total',
@@ -185,7 +185,6 @@ return [
                 'item-shipped'          => 'Verzonden (:qty_shipped)',
                 'item-canceled'         => 'Geannuleerd (:qty_canceled)',
                 'item-refunded'         => 'Terugbetaald (:qty_refunded)',
-                'invoice'               => 'Factuur',
                 'invoice-id'            => 'Factuur #:invoice',
                 'invoices'              => 'Facturen',
                 'notify-customer'       => 'Klant Informeren',
@@ -193,7 +192,6 @@ return [
                 'no-shipment-found'     => 'Geen Verzending Gevonden',
                 'name'                  => 'Naam',
                 'no-refund-found'       => 'Geen Terugbetaling Gevonden',
-                'new-invoice'           => 'Nieuwe Factuur',
                 'order-date'            => 'Besteldatum',
                 'order-status'          => 'Bestelstatus',
                 'order-information'     => 'Bestelinformatie',
@@ -202,7 +200,6 @@ return [
                 'payment-method'        => 'Betaalmethode',
                 'per-unit'              => 'Per Eenheid',
                 'quantity'              => 'Hoeveelheid',
-                'qty-to-invoiced'       => 'Aantal te factureren',
                 'refunded'              => 'Terugbetaald',
                 'refund-id'             => 'Terugbetaling #:refund',
                 'refund'                => 'Terugbetaling',
@@ -422,11 +419,18 @@ return [
                 'tax'                    => 'Belastingbedrag - :tax',
             ],
 
-            'create'   => [
-                'creation-error' => 'Het aanmaken van een factuur voor deze bestelling is niet toegestaan.',
-                'create-success' => 'Factuur succesvol aangemaakt',
-                'invalid-qty'    => 'We hebben een ongeldige hoeveelheid gevonden om items te factureren.',
-                'product-error'  => 'Een factuur kan niet worden aangemaakt zonder producten.',
+            'create' => [
+                'invoice'         => 'Factuur',
+                'create-invoice'  => 'Factuur aanmaken',
+                'new-invoice'     => 'Nieuwe Factuur',
+                'product-image'   => 'Productafbeelding',
+                'amount-per-unit' => ':amount Per Eenheid x :qty Hoeveelheid',
+                'sku'             => 'SKU - :sku',
+                'qty-to-invoiced' => 'Te factureren hoeveelheid',
+                'creation-error'  => 'Het aanmaken van een orderfactuur is niet toegestaan.',
+                'create-success'  => 'Factuur succesvol aangemaakt',
+                'invalid-qty'     => 'We hebben een ongeldige hoeveelheid voor te factureren items gevonden.',
+                'product-error'   => 'Een factuur kan niet worden aangemaakt zonder producten.',
             ],
 
             'invoice-pdf' => [
@@ -673,22 +677,24 @@ return [
                     ],
 
                     'grouped' => [
-                        'add-btn'     => 'Product Toevoegen',
-                        'delete'      => 'Verwijderen',
-                        'default-qty' => 'Standaard Hoeveelheid',
-                        'empty-title' => 'Product Toevoegen',
-                        'empty-info'  => 'Om verschillende combinaties van producten snel te maken.',
-                        'info'        => 'Een gegroepeerd product bestaat uit op zichzelf staande items die als een set worden gepresenteerd, waardoor variaties of coördinatie per seizoen of thema mogelijk zijn. Elk product kan afzonderlijk worden gekocht of als onderdeel van de groep.',
-                        'sku'         => 'SKU - :sku',
-                        'title'       => 'Gegroepeerde Producten',
+                        'add-btn'           => 'Product Toevoegen',
+                        'delete'            => 'Verwijderen',
+                        'default-qty'       => 'Standaard Hoeveelheid',
+                        'empty-title'       => 'Product Toevoegen',
+                        'empty-info'        => 'Om verschillende combinaties van producten snel te maken.',
+                        'image-placeholder' => 'Product Afbeelding',
+                        'info'              => 'Een gegroepeerd product bestaat uit op zichzelf staande items die als een set worden gepresenteerd, waardoor variaties of coördinatie per seizoen of thema mogelijk zijn. Elk product kan afzonderlijk worden gekocht of als onderdeel van de groep.',
+                        'sku'               => 'SKU - :sku',
+                        'title'             => 'Gegroepeerde Producten',
                     ],
 
                     'bundle' => [
-                        'add-btn'     => 'Optie Toevoegen',
-                        'empty-title' => 'Optie Toevoegen',
-                        'empty-info'  => 'Om bundelopties snel te maken.',
-                        'info'        => 'Een bundelproduct is een pakket van meerdere items of diensten die samen worden verkocht tegen een speciale prijs, waardoor waarde en gemak voor klanten worden geboden.',
-                        'title'       => 'Bundelopties',
+                        'add-btn'           => 'Optie Toevoegen',
+                        'empty-title'       => 'Optie Toevoegen',
+                        'empty-info'        => 'Om bundelopties snel te maken.',
+                        'image-placeholder' => 'Product Afbeelding',
+                        'info'              => 'Een bundelproduct is een pakket van meerdere items of diensten die samen worden verkocht tegen een speciale prijs, waardoor waarde en gemak voor klanten worden geboden.',
+                        'title'             => 'Bundelopties',
 
                         'update-create' => [
                             'checkbox'    => 'Aankruisvak',
@@ -2458,7 +2464,7 @@ return [
             'delete-warning'     => 'Weet u zeker dat u deze actie wilt uitvoeren?',
             'login-error'        => 'Controleer uw inloggegevens en probeer het opnieuw.',
             'activate-warning'   => 'Uw account is nog niet geactiveerd, neem contact op met de beheerder.',
-            'last-delete-error'  => 'Laatste gebruiker kon niet worden verwijderd.'
+            'last-delete-error'  => 'Laatste gebruiker kon niet worden verwijderd.',
         ],
 
         'roles' => [
@@ -2557,6 +2563,7 @@ return [
                 'footer-link'                   => 'Voettekstlinks',
                 'footer-link-form-title'        => 'Voettekstlink',
                 'slider-description'            => 'Thema-aanpassing gerelateerd aan sliders.',
+                'slider-required'               => 'Slider-veld is verplicht.',
                 'slider-add-btn'                => 'Slider toevoegen',
                 'general'                       => 'Algemeen',
                 'add-filter-btn'                => 'Filter toevoegen',
@@ -2564,8 +2571,6 @@ return [
                 'save-btn'                      => 'Opslaan',
                 'filter-title'                  => 'Titel',
                 'sort'                          => 'Sorteren',
-                'desc'                          => 'Aflopend',
-                'asc'                           => 'Oplopend',
                 'limit'                         => 'Limiet',
                 'key'                           => 'Sleutel: :key',
                 'value'                         => 'Waarde: :value',
@@ -2674,7 +2679,7 @@ return [
                 ],
 
                 'products' => [
-                    'info'  => 'Stel gastafrekening, startpagina, productweergavepagina, winkelwagenweergavepagina, etalage, beoordeling en attribuutsociale delen in.',
+                    'info'  => 'Stel gastafrekening, productweergavepagina, winkelwagenweergavepagina, winkelvoorkant, beoordeling en attribuutsociale deling in.',
                     'title' => 'Producten',
 
                     'guest-checkout' => [
@@ -3077,13 +3082,13 @@ return [
                     'categories'                      => 'Categorieën',
                     'customers'                       => 'Klanten',
                     'sku'                             => 'SKU: :sku',
-                    'explore-all-matching-products'   => 'Verken alle producten die overeenkomen met ":query" (:count)',
+                    'explore-all-matching-products'   => 'Verken alle producten die overeenkomen met \":query\" (:count)',
                     'explore-all-products'            => 'Verken alle producten',
-                    'explore-all-matching-orders'     => 'Verken alle bestellingen die overeenkomen met ":query" (:count)',
+                    'explore-all-matching-orders'     => 'Verken alle bestellingen die overeenkomen met \":query\" (:count)',
                     'explore-all-orders'              => 'Verken alle bestellingen',
-                    'explore-all-matching-categories' => 'Verken alle categorieën die overeenkomen met ":query" (:count)',
+                    'explore-all-matching-categories' => 'Verken alle categorieën die overeenkomen met \":query\" (:count)',
                     'explore-all-categories'          => 'Verken alle categorieën',
-                    'explore-all-matching-customers'  => 'Verken alle klanten die overeenkomen met ":query" (:count)',
+                    'explore-all-matching-customers'  => 'Verken alle klanten die overeenkomen met \":query\" (:count)',
                     'explore-all-customers'           => 'Verken alle klanten',
                 ],
             ],
@@ -3155,11 +3160,24 @@ return [
             ],
 
             'filters' => [
-                'title' => 'Filters Toepassen',
+                'title'  => 'Filters Toepassen',
+                'select' => 'Selecteren.',
+
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => 'Typ minimaal 2 tekens...',
+                        'no-results'        => 'Geen resultaten gevonden...',
+                    ],
+                ],
 
                 'custom-filters' => [
                     'title'     => 'Aangepaste Filters',
                     'clear-all' => 'Alles Wissen',
+                ],
+
+                'boolean-options' => [
+                    'true'  => 'Waar',
+                    'false' => 'Onwaar',
                 ],
 
                 'date-options' => [
@@ -3273,6 +3291,7 @@ return [
         'events'                   => 'Evenementen',
         'sitemaps'                 => 'Sitemaps',
         'newsletter-subscriptions' => 'Nieuwsbriefabonnementen',
+        'transactions'             => 'Transacties',
     ],
 
     'errors' => [

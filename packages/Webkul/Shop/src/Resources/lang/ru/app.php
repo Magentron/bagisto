@@ -66,6 +66,7 @@ return [
 
         'account' => [
             'home'      => 'Домой',
+
             'profile'   => [
                 'title'                   => 'Профиль',
                 'first-name'              => 'Имя',
@@ -256,7 +257,7 @@ return [
                 'delete-all'         => 'Удалить все',
                 'empty'              => 'На странице списка желаний пока нет товаров.',
                 'move-to-cart'       => 'Переместить в корзину',
-                'moved-success'      => 'Товар успешно перемещен в корзину',    
+                'moved-success'      => 'Товар успешно перемещен в корзину',
                 'moved'              => 'Товар успешно перемещен в корзину',
                 'page-title'         => 'Список желаний',
                 'profile'            => 'Профиль',
@@ -277,15 +278,15 @@ return [
             'default-content' => 'Содержимое по умолчанию',
             'default-header'  => 'Заголовок по умолчанию',
         ],
-        
+
         'drawer' => [
-           'default-toggle'  => 'Переключатель по умолчанию',
+            'default-toggle'  => 'Переключатель по умолчанию',
         ],
-        
+
         'media' => [
             'add-attachments' => 'Добавить вложения',
         ],
-        
+
         'layouts' => [
             'header' => [
                 'title'         => 'Личный кабинет',
@@ -344,6 +345,13 @@ return [
             'filters' => [
                 'title' => 'Применить фильтры',
 
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => 'Введите хотя бы 2 символа...',
+                        'no-results'        => 'Результаты не найдены...',
+                    ],
+                ],
+
                 'custom-filters' => [
                     'title'     => 'Пользовательские фильтры',
                     'clear-all' => 'Сбросить все',
@@ -370,7 +378,7 @@ return [
         'modal' => [
             'default-content' => 'Содержимое по умолчанию',
             'default-header'  => 'Заголовок по умолчанию',
-            
+
             'confirm' => [
                 'title'        => 'Вы уверены?',
                 'message'      => 'Вы уверены, что хотите выполнить это действие?',
@@ -399,43 +407,18 @@ return [
         ],
     ],
 
-    'products'  => [
-        'reviews'                => 'Отзывы',
-        'add-to-cart'            => 'Добавить в корзину',
-        'add-to-compare'         => 'Товар добавлен для сравнения.',
-        'already-in-compare'     => 'Товар уже добавлен в список сравнения.',
-        'buy-now'                => 'Купить сейчас',
-        'compare'                => 'Сравнить',
-        'rating'                 => 'Рейтинг',
-        'title'                  => 'Заголовок',
-        'comment'                => 'Комментарий',
-        'submit-review'          => 'Оставить отзыв',
-        'customer-review'        => 'Отзывы клиентов',
-        'write-a-review'         => 'Написать отзыв',
-        'stars'                  => 'Звезды',
-        'share'                  => 'Поделиться',
-        'empty-review'           => 'Отзывов не найдено, вы можете быть первым, кто оставит отзыв о продукте',
-        'was-this-helpful'       => 'Помог ли вам этот отзыв?',
-        'load-more'              => 'Загрузить еще',
-        'add-image'              => 'Добавить изображение',
-        'description'            => 'Описание',
-        'additional-information' => 'Дополнительная информация',
-        'submit-success'         => 'Успешно отправлено',
-        'something-went-wrong'   => 'Что-то пошло не так',
-        'in-stock'               => 'В наличии',
-        'available-for-order'    => 'Доступно для заказа',
-        'out-of-stock'           => 'Нет в наличии',
-        'related-product-title'  => 'Сопутствующие товары',
-        'up-sell-title'          => 'Мы нашли другие товары, которые вам могут понравиться!',
-        'new'                    => 'Новинка',
-        'as-low-as'              => 'Всего за',
-        'starting-at'            => 'Начиная с',
-        'name'                   => 'Наименование',
-        'qty'                    => 'Количество',
-        'offers'                 => 'Купите :qty по цене :price каждый и сэкономьте :discount%',
-        'tax-inclusive'          => 'Включая все налоги',
-
-        'sort-by'                => [
+    'products' => [
+        'prices' => [
+            'grouped' => [
+                'starting-at' => 'Начиная с',
+            ],
+    
+            'configurable' => [
+                'as-low-as' => 'От',
+            ],
+        ],
+    
+        'sort-by' => [
             'title'   => 'Сортировать по',
             'options' => [
                 'from-a-z'        => 'От А до Я',
@@ -446,36 +429,68 @@ return [
                 'expensive-first' => 'Сначала дорогие',
             ],
         ],
-
+    
         'view' => [
             'type' => [
                 'configurable' => [
                     'select-options'       => 'Пожалуйста, выберите опцию',
                     'select-above-options' => 'Пожалуйста, выберите опции выше',
                 ],
-
+    
                 'bundle' => [
                     'none' => 'Нет',
                 ],
-
+    
                 'downloadable' => [
                     'samples' => 'Образцы',
                     'links'   => 'Ссылки',
                     'sample'  => 'Образец',
                 ],
-
+    
                 'grouped' => [
-                    'name' => 'Наименование',
+                    'name' => 'Название',
                 ],
             ],
-
+    
+            'gallery' => [
+                'thumbnail-image' => 'Миниатюра',
+                'product-image'   => 'Изображение товара',
+            ],
+    
             'reviews' => [
-                'cancel'      => 'Отменить',
+                'cancel'      => 'Отмена',
+                'rating'      => 'Рейтинг',
                 'success'     => 'Отзыв успешно отправлен.',
                 'attachments' => 'Вложения',
+                'title'       => 'Заголовок',
+                'comment'     => 'Комментарий',
+                'customer-review'        => 'Отзывы клиентов',
+                'submit-review'          => 'Отправить отзыв',
+                'write-a-review'         => 'Написать отзыв',
+                'empty-review'           => 'Отзывов не найдено, будьте первым, кто оценит этот продукт',
+                'load-more'              => 'Загрузить еще',
+                'failed-to-upload'       => 'Не удалось загрузить изображение',
+            ],
+    
+            'description'            => 'Описание',
+            'additional-information' => 'Дополнительная информация',
+            'review'                 => 'Отзывы',
+            'related-product-title'  => 'Сопутствующие товары',
+            'up-sell-title'          => 'Мы нашли другие товары, которые вам могут понравиться!',
+            'tax-inclusive'          => 'Включая все налоги',
+            'add-to-cart'            => 'Добавить в корзину',
+            'buy-now'                => 'Купить сейчас',
+            'compare'                => 'Сравнить',
+            'add-to-compare'         => 'Продукт добавлен для сравнения.',
+            'already-in-compare'     => 'Продукт уже добавлен для сравнения.',
+        ],
+    
+        'type' => [
+            'abstract' => [
+                'offers' => 'Купите :qty по :price каждый и сэкономьте :discount%',
             ],
         ],
-    ],
+    ],    
 
     'categories' => [
         'filters' => [

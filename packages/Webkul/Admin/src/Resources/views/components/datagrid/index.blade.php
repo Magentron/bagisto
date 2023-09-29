@@ -63,6 +63,8 @@
                     isLoading: false,
 
                     available: {
+                        id: null,
+
                         columns: [],
 
                         actions: [],
@@ -184,12 +186,15 @@
                              * Precisely taking all the keys to the data prop to avoid adding any extra keys from the response.
                              */
                             const {
+                                id,
                                 columns,
                                 actions,
                                 mass_actions,
                                 records,
                                 meta
                             } = response.data;
+
+                            this.available.id = id;
 
                             this.available.columns = columns;
 
@@ -270,6 +275,13 @@
                  */
                 changePerPageOption(option) {
                     this.applied.pagination.perPage = option;
+
+                    /**
+                     * When the total records are less than the number of data per page, we need to reset the page.
+                     */
+                    if (this.available.meta.last_page >= this.applied.pagination.page) {
+                        this.applied.pagination.page = 1;
+                    }
 
                     this.get();
                 },
@@ -544,7 +556,7 @@
                         this.applied.massActions.value === null
                     ) {
                         this.$emitter.emit('add-flash', { type: 'warning', message: "@lang('admin::app.components.datagrid.index.must-select-a-mass-action-option')" });
-                        
+
                         return false;
                     }
 

@@ -156,6 +156,7 @@ return [
                     'status'           => 'Status',
                     'success'          => 'Sukces',
                     'view'             => 'Podgląd',
+                    'product-count'    => ':count + Więcej produktów'
                 ],
             ],
 
@@ -175,7 +176,6 @@ return [
                 'comment-success'       => 'Komentarz dodany pomyślnie.',
                 'create-success'        => 'Zamówienie utworzone pomyślnie',
                 'cancel-success'        => 'Zamówienie zostało pomyślnie anulowane',
-                'create-invoice'        => 'Utwórz fakturę',
                 'discount'              => 'Rabat - :discount',
                 'download-pdf'          => 'Pobierz PDF',
                 'grand-total'           => 'Suma ogólna - :grand_total',
@@ -185,7 +185,6 @@ return [
                 'item-shipped'          => 'Wysłane (:qty_shipped)',
                 'item-canceled'         => 'Anulowane (:qty_canceled)',
                 'item-refunded'         => 'Zwrócone (:qty_refunded)',
-                'invoice'               => 'Faktura',
                 'invoice-id'            => 'Faktura #:invoice',
                 'invoices'              => 'Faktury',
                 'notify-customer'       => 'Powiadom klienta',
@@ -193,7 +192,6 @@ return [
                 'no-shipment-found'     => 'Nie znaleziono przesyłek',
                 'name'                  => 'Nazwa',
                 'no-refund-found'       => 'Nie znaleziono zwrotów',
-                'new-invoice'           => 'Nowa faktura',
                 'order-date'            => 'Data zamówienia',
                 'order-status'          => 'Status zamówienia',
                 'order-information'     => 'Informacje o zamówieniu',
@@ -202,7 +200,6 @@ return [
                 'payment-method'        => 'Metoda płatności',
                 'per-unit'              => 'Za jednostkę',
                 'quantity'              => 'Ilość',
-                'qty-to-invoiced'       => 'Ilość do zafakturowania',
                 'refunded'              => 'Zwrócone',
                 'refund-id'             => 'Zwrot #:refund',
                 'refund'                => 'Zwrot',
@@ -422,11 +419,18 @@ return [
                 'tax'                    => 'Kwota podatku - :tax',
             ],
 
-            'create'   => [
-                'creation-error' => 'Nie można utworzyć faktury zamówienia.',
-                'create-success' => 'Faktura utworzona pomyślnie',
-                'invalid-qty'    => 'Znaleziono nieprawidłową ilość pozycji do faktury.',
-                'product-error'  => 'Nie można utworzyć faktury bez produktów.',
+            'create' => [
+                'invoice'         => 'Faktura',
+                'create-invoice'  => 'Utwórz fakturę',
+                'new-invoice'     => 'Nowa faktura',
+                'product-image'   => 'Zdjęcie produktu',
+                'amount-per-unit' => ':amount Na jednostkę x :qty Ilość',
+                'sku'             => 'SKU - :sku',
+                'qty-to-invoiced' => 'Ilość do faktury',
+                'creation-error'  => 'Nie wolno tworzyć faktury zamówienia.',
+                'create-success'  => 'Faktura utworzona pomyślnie',
+                'invalid-qty'     => 'Znaleziono nieprawidłową ilość pozycji do faktury.',
+                'product-error'   => 'Nie można tworzyć faktury bez produktów.',
             ],
 
             'invoice-pdf' => [
@@ -673,22 +677,24 @@ return [
                     ],
 
                     'grouped' => [
-                        'add-btn'     => 'Dodaj produkt',
-                        'delete'      => 'Usuń',
-                        'default-qty' => 'Domyślna ilość',
-                        'empty-title' => 'Dodaj produkt',
-                        'empty-info'  => 'Aby tworzyć różne kombinacje produktów, wystarczy to zrobić.',
-                        'info'        => 'Produkt grupowy składa się z samodzielnych pozycji prezentowanych jako zestaw, umożliwiający zmiany lub koordynację ze względu na sezon lub motyw. Każdy produkt można kupić indywidualnie lub jako część grupy.',
-                        'sku'         => 'SKU - :sku',
-                        'title'       => 'Produkty grupowe',
+                        'add-btn'           => 'Dodaj produkt',
+                        'delete'            => 'Usuń',
+                        'default-qty'       => 'Domyślna ilość',
+                        'empty-title'       => 'Dodaj produkt',
+                        'empty-info'        => 'Aby tworzyć różne kombinacje produktów, wystarczy to zrobić.',
+                        'image-placeholder' => 'Obraz produktu',
+                        'info'              => 'Produkt grupowy składa się z samodzielnych pozycji prezentowanych jako zestaw, umożliwiający zmiany lub koordynację ze względu na sezon lub motyw. Każdy produkt można kupić indywidualnie lub jako część grupy.',
+                        'sku'               => 'SKU - :sku',
+                        'title'             => 'Produkty grupowe',
                     ],
 
                     'bundle' => [
-                        'add-btn'     => 'Dodaj opcję',
-                        'empty-title' => 'Dodaj opcję',
-                        'empty-info'  => 'Aby tworzyć opcje pakietu, wystarczy to zrobić.',
-                        'info'        => 'Produkt wiązany to zestaw wielu produktów lub usług sprzedawanych razem w specjalnej cenie, zapewniający wartość i wygodę klientom.',
-                        'title'       => 'Pozycje pakietu',
+                        'add-btn'           => 'Dodaj opcję',
+                        'empty-title'       => 'Dodaj opcję',
+                        'empty-info'        => 'Aby tworzyć opcje pakietu, wystarczy to zrobić.',
+                        'image-placeholder' => 'Obraz produktu',
+                        'info'              => 'Produkt wiązany to zestaw wielu produktów lub usług sprzedawanych razem w specjalnej cenie, zapewniający wartość i wygodę klientom.',
+                        'title'             => 'Pozycje pakietu',
 
                         'update-create' => [
                             'checkbox'    => 'Pole wyboru',
@@ -1202,7 +1208,7 @@ return [
                 'title'                 => 'Edytuj Klienta',
             ],
 
-            'view' => [   
+            'view' => [
                 'address'                     => 'Adres',
                 'back-btn'                    => 'Powrót',
                 'add-note'                    => 'Dodaj Notatkę',
@@ -2458,7 +2464,7 @@ return [
             'delete-warning'     => 'Czy na pewno chcesz wykonać tę akcję?',
             'login-error'        => 'Sprawdź swoje dane logowania i spróbuj ponownie.',
             'activate-warning'   => 'Twoje konto nie zostało jeszcze aktywowane, skontaktuj się z administratorem.',
-            'last-delete-error'  => 'Usuwanie ostatniego użytkownika nie powiodło się.'
+            'last-delete-error'  => 'Usuwanie ostatniego użytkownika nie powiodło się.',
         ],
 
         'roles' => [
@@ -2508,6 +2514,7 @@ return [
             'delete-failed'     => 'Usunięcie roli nie powiodło się',
             'being-used'        => 'Rola jest już używana przez Administratora',
         ],
+
         'themes' => [
             'index' => [
                 'title'      => 'Motywy',
@@ -2556,6 +2563,7 @@ return [
                 'footer-link'                   => 'Linki w Stopce',
                 'footer-link-form-title'        => 'Link w Stopce',
                 'slider-description'            => 'Dostosowanie motywu związane z sliderem.',
+                'slider-required'               => 'Pole suwaka jest wymagane.',
                 'slider-add-btn'                => 'Dodaj Slajd',
                 'general'                       => 'Ogólne',
                 'add-filter-btn'                => 'Dodaj Filtr',
@@ -2563,8 +2571,6 @@ return [
                 'save-btn'                      => 'Zapisz',
                 'filter-title'                  => 'Tytuł',
                 'sort'                          => 'Sortuj',
-                'desc'                          => 'Malejąco',
-                'asc'                           => 'Rosnąco',
                 'limit'                         => 'Limit',
                 'key'                           => 'Klucz: :key',
                 'value'                         => 'Wartość: :value',
@@ -2673,7 +2679,7 @@ return [
                 ],
 
                 'products' => [
-                    'info'  => 'Ustaw gościnny zakup, stronę główną, stronę widoku produktu, widok koszyka, przód sklepu, recenzję i udostępnianie społecznościowe atrybutów.',
+                    'info'  => 'Skonfiguruj gościnne zamówienie, stronę wyświetlania produktów, stronę wyświetlania koszyka, stronę główną sklepu, recenzję i udostępnianie atrybutów społecznościowych.',
                     'title' => 'Produkty',
 
                     'guest-checkout' => [
@@ -3076,13 +3082,13 @@ return [
                     'categories'                      => 'Kategorie',
                     'customers'                       => 'Klienci',
                     'sku'                             => 'SKU: :sku',
-                    'explore-all-matching-products'   => 'Przeglądaj wszystkie produkty pasujące do ":query" (:count)',
+                    'explore-all-matching-products'   => 'Przeglądaj wszystkie produkty pasujące do \":query\" (:count)',
                     'explore-all-products'            => 'Przeglądaj wszystkie produkty',
-                    'explore-all-matching-orders'     => 'Przeglądaj wszystkie zamówienia pasujące do ":query" (:count)',
+                    'explore-all-matching-orders'     => 'Przeglądaj wszystkie zamówienia pasujące do \":query\" (:count)',
                     'explore-all-orders'              => 'Przeglądaj wszystkie zamówienia',
-                    'explore-all-matching-categories' => 'Przeglądaj wszystkie kategorie pasujące do ":query" (:count)',
+                    'explore-all-matching-categories' => 'Przeglądaj wszystkie kategorie pasujące do \":query\" (:count)',
                     'explore-all-categories'          => 'Przeglądaj wszystkie kategorie',
-                    'explore-all-matching-customers'  => 'Przeglądaj wszystkich klientów pasujących do ":query" (:count)',
+                    'explore-all-matching-customers'  => 'Przeglądaj wszystkich klientów pasujących do \":query\" (:count)',
                     'explore-all-customers'           => 'Przeglądaj wszystkich klientów',
                 ],
             ],
@@ -3154,11 +3160,24 @@ return [
             ],
 
             'filters' => [
-                'title' => 'Zastosuj Filtry',
+                'title'  => 'Zastosuj Filtry',
+                'select' => 'Wybierz.',
+
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => 'Wprowadź co najmniej 2 znaki...',
+                        'no-results'        => 'Nie znaleziono wyników...',
+                    ],
+                ],
 
                 'custom-filters' => [
                     'title'     => 'Niestandardowe Filtry',
                     'clear-all' => 'Wyczyść Wszystko',
+                ],
+
+                'boolean-options' => [
+                    'true'  => 'Prawda',
+                    'false' => 'Fałsz',
                 ],
 
                 'date-options' => [
@@ -3272,6 +3291,7 @@ return [
         'events'                   => 'Wydarzenia',
         'sitemaps'                 => 'Mapy Strony',
         'newsletter-subscriptions' => 'Subskrypcje Newslettera',
+        'transactions'             => 'Transakcje',
     ],
 
     'errors' => [

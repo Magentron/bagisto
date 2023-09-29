@@ -156,6 +156,7 @@ return [
                     'status'           => '状态',
                     'success'          => '成功',
                     'view'             => '查看',
+                    'product-count'    => ':count + 更多产品'
                 ],
             ],
 
@@ -175,7 +176,6 @@ return [
                 'comment-success'       => '评论成功添加。',
                 'create-success'        => '订单创建成功',
                 'cancel-success'        => '订单取消成功',
-                'create-invoice'        => '创建发票',
                 'discount'              => '折扣 - :discount',
                 'download-pdf'          => '下载PDF',
                 'grand-total'           => '总计 - :grand_total',
@@ -185,7 +185,6 @@ return [
                 'item-shipped'          => '已发货 (:qty_shipped)',
                 'item-canceled'         => '已取消 (:qty_canceled)',
                 'item-refunded'         => '已退款 (:qty_refunded)',
-                'invoice'               => '发票',
                 'invoice-id'            => '发票 #:invoice',
                 'invoices'              => '发票',
                 'notify-customer'       => '通知客户',
@@ -193,7 +192,6 @@ return [
                 'no-shipment-found'     => '未找到发货',
                 'name'                  => '姓名',
                 'no-refund-found'       => '未找到退款',
-                'new-invoice'           => '新发票',
                 'order-date'            => '订单日期',
                 'order-status'          => '订单状态',
                 'order-information'     => '订单信息',
@@ -202,7 +200,6 @@ return [
                 'payment-method'        => '付款方式',
                 'per-unit'              => '每单位',
                 'quantity'              => '数量',
-                'qty-to-invoiced'       => '待开票数量',
                 'refunded'              => '已退款',
                 'refund-id'             => '退款 #:refund',
                 'refund'                => '退款',
@@ -422,11 +419,18 @@ return [
                 'tax'                    => '税额 - :tax',
             ],
 
-            'create'   => [
-                'creation-error' => '不允许创建订单发票。',
-                'create-success' => '发票创建成功',
-                'invalid-qty'    => '我们发现了无效的商品数量要开发票。',
-                'product-error'  => '没有产品的情况下无法创建发票。',
+            'create' => [
+                'invoice'         => '发票',
+                'create-invoice'  => '创建发票',
+                'new-invoice'     => '新发票',
+                'product-image'   => '产品图片',
+                'amount-per-unit' => ':amount 每单位 x :qty 数量',
+                'sku'             => 'SKU - :sku',
+                'qty-to-invoiced' => '要开具发票的数量',
+                'creation-error'  => '不允许创建订单发票。',
+                'create-success'  => '发票创建成功',
+                'invalid-qty'     => '我们发现了无效的数量以开具发票。',
+                'product-error'   => '没有产品无法创建发票。',
             ],
 
             'invoice-pdf' => [
@@ -655,7 +659,7 @@ return [
                             'sku'             => 'SKU',
                             'status'          => '状态',
                             'weight'          => '重量',
-                            'images'         => '图片',
+                            'images'          => '图片',
                         ],
 
                         'mass-edit' => [
@@ -673,22 +677,24 @@ return [
                     ],
 
                     'grouped' => [
-                        'add-btn'     => '添加产品',
-                        'delete'      => '删除',
-                        'default-qty' => '默认数量',
-                        'empty-title' => '添加产品',
-                        'empty-info'  => '随时创建产品的各种组合。',
-                        'info'        => '分组产品包括独立销售的项目，作为一个集合呈现，允许按季节或主题进行变化或协调。每个产品可以单独购买，也可以作为该组的一部分购买。',
-                        'sku'         => 'SKU - :sku',
-                        'title'       => '组合产品',
+                        'add-btn'           => '添加产品',
+                        'delete'            => '删除',
+                        'default-qty'       => '默认数量',
+                        'empty-title'       => '添加产品',
+                        'empty-info'        => '随时创建产品的各种组合。',
+                        'image-placeholder' => '产品图片',
+                        'info'              => '分组产品包括独立销售的项目，作为一个集合呈现，允许按季节或主题进行变化或协调。每个产品可以单独购买，也可以作为该组的一部分购买。',
+                        'sku'               => 'SKU - :sku',
+                        'title'             => '组合产品',
                     ],
 
                     'bundle' => [
-                        'add-btn'     => '添加选项',
-                        'empty-title' => '添加选项',
-                        'empty-info'  => '随时创建捆绑选项。',
-                        'info'        => '捆绑产品是一组多个项目或服务，以特价一起销售，为客户提供价值和便利。',
-                        'title'       => '捆绑项目',
+                        'add-btn'           => '添加选项',
+                        'empty-title'       => '添加选项',
+                        'empty-info'        => '随时创建捆绑选项。',
+                        'image-placeholder' => '产品图片',
+                        'info'              => '捆绑产品是一组多个项目或服务，以特价一起销售，为客户提供价值和便利。',
+                        'title'             => '捆绑项目',
 
                         'update-create' => [
                             'checkbox'    => '复选框',
@@ -2428,7 +2434,7 @@ return [
                     'edit'     => '编辑',
                     'active'   => '活跃',
                     'inactive' => '不活跃',
-                    'delete'   => '删除'
+                    'delete'   => '删除',
                 ],
 
                 'edit'  => [
@@ -2458,7 +2464,7 @@ return [
             'delete-warning'     => '您确定要执行此操作吗？',
             'login-error'        => '请检查您的凭据并重试。',
             'activate-warning'   => '您的帐户尚未激活，请联系管理员。',
-            'last-delete-error'  => '删除最后一个用户失败。'
+            'last-delete-error'  => '删除最后一个用户失败。',
         ],
 
         'roles' => [
@@ -2557,6 +2563,7 @@ return [
                 'footer-link'                   => '页脚链接',
                 'footer-link-form-title'        => '页脚链接',
                 'slider-description'            => '与轮播相关的主题定制。',
+                'slider-required'               => '滑块字段是必需的。',
                 'slider-add-btn'                => '添加轮播',
                 'general'                       => '通用',
                 'add-filter-btn'                => '添加过滤器',
@@ -2564,8 +2571,6 @@ return [
                 'save-btn'                      => '保存',
                 'filter-title'                  => '标题',
                 'sort'                          => '排序',
-                'desc'                          => '降序',
-                'asc'                           => '升序',
                 'limit'                         => '限制',
                 'key'                           => '键：:key',
                 'value'                         => '值：:value',
@@ -2591,7 +2596,7 @@ return [
                 'edit'                          => '编辑',
                 'back'                          => '返回',
                 'preview'                       => '预览',
-                'channels'                      => '频道'
+                'channels'                      => '频道',
             ],
 
             'create-success' => '主题创建成功',
@@ -2674,7 +2679,7 @@ return [
                 ],
 
                 'products' => [
-                    'info'  => '设置访客结账、主页、产品查看页面、购物车查看页面、商店前端、评论和属性社交分享。',
+                    'info'  => '设置访客结帐，产品查看页面，购物车查看页面，商店前端，评论和属性社交分享。',
                     'title' => '产品',
 
                     'guest-checkout' => [
@@ -3155,11 +3160,24 @@ return [
             ],
 
             'filters' => [
-                'title' => '应用筛选',
+                'title'  => '应用筛选',
+                'select' => '选择',
+
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => '请输入至少2个字符...',
+                        'no-results'        => '未找到结果...',
+                    ],
+                ],
 
                 'custom-filters' => [
                     'title'     => '自定义筛选',
                     'clear-all' => '清除所有',
+                ],
+
+                'boolean-options' => [
+                    'true'  => '真',
+                    'false' => '假',
                 ],
 
                 'date-options' => [
@@ -3273,6 +3291,7 @@ return [
         'events'                   => '事件',
         'sitemaps'                 => '站点地图',
         'newsletter-subscriptions' => '电子报订阅',
+        'transactions'             => '交易',
     ],
 
     'errors' => [

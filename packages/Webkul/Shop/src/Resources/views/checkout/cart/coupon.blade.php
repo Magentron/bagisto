@@ -9,7 +9,7 @@
     <script type="text/x-template" id="v-coupon-template">
         <div class="flex justify-between text-right">
             <p class="text-[16px] max-sm:text-[14px] max-sm:font-normal">
-                @lang('shop::app.checkout.cart.coupon.discount')
+                @{{ isCouponApplied ? "@lang('shop::app.checkout.cart.coupon.applied')" : "@lang('shop::app.checkout.cart.coupon.discount')" }}
             </p>
 
             <p class="text-[16px] font-medium max-sm:text-[14px]">
@@ -64,7 +64,7 @@
                                 <!-- Coupon Form Action Container -->
                                 <div class="p-[30px] bg-white mt-[20px]">
                                     <div class="flex justify-between items-center gap-[15px] flex-wrap">
-                                        <p class="text-[14px] font-medium text-[#7D7D7D]">
+                                        <p class="text-[14px] font-medium text-[#6E6E6E]">
                                             @lang('shop::app.checkout.cart.coupon.subtotal')
                                         </p>
 
@@ -94,10 +94,6 @@
                     class="flex justify-between items-center text-[12px] font-small "
                     v-if="isCouponApplied"
                 >
-                    <p class="text-[12px] mr-2">
-                        @lang('shop::app.checkout.cart.coupon.applied')
-                    </p>
-                    
                     <p 
                         class="text-[16px] font-medium cursor-pointer text-navyBlue"
                         title="@lang('shop::app.checkout.cart.coupon.applied')"
@@ -131,7 +127,7 @@
             },
 
             methods: {
-                applyCoupon(params) {
+                applyCoupon(params, { resetForm}) {
                     this.$axios.post("{{ route('shop.api.checkout.cart.coupon.apply') }}", params)
                         .then((response) => {
                             this.$parent.$parent.$refs.vCart.get();
@@ -139,6 +135,8 @@
                             this.$emitter.emit('add-flash', { type: 'success', message: response.data.message });
 
                             this.$refs.couponModel.toggle();
+
+                            resetForm();
                         })
                         .catch((error) => {
                             if ([400, 422].includes(error.response.request.status)) {

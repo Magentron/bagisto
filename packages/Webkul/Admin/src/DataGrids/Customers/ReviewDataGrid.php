@@ -81,9 +81,9 @@ class ReviewDataGrid extends DataGrid
             'closure'    => function ($value) {
                 if ($value->product_review_status == 'approved') {
                     return '<p class="label-active">' . trans('admin::app.customers.reviews.index.datagrid.approved') . '</p>';
-                } elseif ($value->product_review_status == "pending") {
+                } elseif ($value->product_review_status == 'pending') {
                     return '<p class="label-pending">' . trans('admin::app.customers.reviews.index.datagrid.pending') . '</p>';
-                } elseif ($value->product_review_status == "disapproved") {  
+                } elseif ($value->product_review_status == 'disapproved') {
                     return '<p class="label-cancelled">' . trans('admin::app.customers.reviews.index.datagrid.disapproved') . '</p>';
                 }
             },
@@ -172,30 +172,34 @@ class ReviewDataGrid extends DataGrid
      */
     public function prepareMassActions()
     {
-        $this->addMassAction([
-            'title'  => trans('admin::app.customers.reviews.index.datagrid.delete'),
-            'url'    => route('admin.customers.customers.review.mass_delete'),
-            'method' => 'POST',
-        ]);
+        if (bouncer()->hasPermission('customers.reviews.mass-delete')) {
+            $this->addMassAction([
+                'title'  => trans('admin::app.customers.reviews.index.datagrid.delete'),
+                'url'    => route('admin.customers.customers.review.mass_delete'),
+                'method' => 'POST',
+            ]);
+        }
 
-        $this->addMassAction([
-            'title'   => trans('admin::app.customers.reviews.index.datagrid.update-status'),
-            'method'  => 'POST',
-            'url'     => route('admin.customers.customers.review.mass_update'),
-            'options' => [
-                [
-                    'name' => trans('admin::app.customers.reviews.index.datagrid.pending'),
-                    'value' => 'pending',
+        if (bouncer()->hasPermission('customers.reviews.mass-update')) {
+            $this->addMassAction([
+                'title'   => trans('admin::app.customers.reviews.index.datagrid.update-status'),
+                'method'  => 'POST',
+                'url'     => route('admin.customers.customers.review.mass_update'),
+                'options' => [
+                    [
+                        'label' => trans('admin::app.customers.reviews.index.datagrid.pending'),
+                        'value' => 'pending',
+                    ],
+                    [
+                        'label' => trans('admin::app.customers.reviews.index.datagrid.approved'),
+                        'value' => 'approved',
+                    ],
+                    [
+                        'label' => trans('admin::app.customers.reviews.index.datagrid.disapproved'),
+                        'value' => 'disapproved',
+                    ],
                 ],
-                [
-                    'name' => trans('admin::app.customers.reviews.index.datagrid.approved'),
-                    'value' => 'approved',
-                ],
-                [
-                    'name' => trans('admin::app.customers.reviews.index.datagrid.disapproved'),
-                    'value' => 'disapproved',
-                ],
-            ],
-        ]);
+            ]);
+        }
     }
 }

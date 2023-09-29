@@ -66,6 +66,7 @@ return [
 
         'account' => [
             'home'    => 'Anasayfa',
+
             'profile' => [
                 'title'                   => 'Profil',
                 'first-name'              => 'Ad',
@@ -256,7 +257,7 @@ return [
                 'delete-all'         => 'Tümünü Sil',
                 'empty'              => 'İstek listesi sayfasına herhangi bir ürün eklenmedi.',
                 'move-to-cart'       => 'Sepete Taşı',
-                'moved-success'      => 'Öğe Başarıyla Sepete Taşındı',    
+                'moved-success'      => 'Öğe Başarıyla Sepete Taşındı',
                 'moved'              => 'Ürün başarıyla sepete taşındı',
                 'profile'            => 'Profil',
                 'product-removed'    => 'Ürün, Yönetici Tarafından Kaldırıldığı İçin Artık Mevcut Değil',
@@ -277,15 +278,15 @@ return [
             'default-content' => 'Varsayılan İçerik',
             'default-header'  => 'Varsayılan Başlık',
         ],
-        
+
         'drawer' => [
-           'default-toggle'  => 'Varsayılan Değiştirme',
+            'default-toggle'  => 'Varsayılan Değiştirme',
         ],
-        
+
         'media' => [
             'add-attachments' => 'Ekler Ekle',
         ],
-        
+
         'layouts' => [
             'header' => [
                 'title'         => 'Hesap',
@@ -344,6 +345,13 @@ return [
             'filters' => [
                 'title' => 'Filtreleri Uygula',
 
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => 'En az 2 karakter girin...',
+                        'no-results'        => 'Sonuç bulunamadı...',
+                    ],
+                ],
+
                 'custom-filters' => [
                     'title'     => 'Özel Filtreler',
                     'clear-all' => 'Hepsini Temizle',
@@ -370,14 +378,14 @@ return [
         'modal' => [
             'default-content' => 'Varsayılan İçerik',
             'default-header'  => 'Varsayılan Başlık',
-            
+
             'confirm' => [
                 'title'        => 'Emin misiniz?',
                 'message'      => 'Bu işlemi yapmak istediğinizden emin misiniz?',
                 'agree-btn'    => 'Onayla',
                 'disagree-btn' => 'Onaylama',
             ],
-        ],        
+        ],
 
         'products'   => [
             'card' => [
@@ -400,82 +408,89 @@ return [
     ],
 
     'products' => [
-        'reviews'                => 'İncelemeler',
-        'add-to-cart'            => 'Sepete Ekle',
-        'add-to-compare'         => 'Ürün karşılaştırmaya eklendi.',
-        'already-in-compare'     => 'Ürün zaten karşılaştırmada.',
-        'buy-now'                => 'Hemen Satın Al',
-        'compare'                => 'Karşılaştır',
-        'rating'                 => 'Puan',
-        'title'                  => 'Başlık',
-        'comment'                => 'Yorum',
-        'submit-review'          => 'İncelemeyi Gönder',
-        'customer-review'        => 'Müşteri İncelemeleri',
-        'write-a-review'         => 'İnceleme Yaz',
-        'stars'                  => 'Yıldızlar',
-        'share'                  => 'Paylaş',
-        'empty-review'           => 'Hiç inceleme bulunamadı, bu ürünü incelemek için ilk yorumu yapın',
-        'was-this-helpful'       => 'Bu İnceleme Yardımcı Oldu mu?',
-        'load-more'              => 'Daha Fazla Yükle',
-        'add-image'              => 'Resim Ekle',
-        'description'            => 'Açıklama',
-        'additional-information' => 'Ek Bilgiler',
-        'submit-success'         => 'Başarıyla Gönderildi',
-        'something-went-wrong'   => 'Bir şeyler ters gitti',
-        'in-stock'               => 'Stokta Var',
-        'available-for-order'    => 'Sipariş İçin Uygun',
-        'out-of-stock'           => 'Stokta Yok',
-        'related-product-title'  => 'İlgili Ürünler',
-        'up-sell-title'          => 'Beğenebileceğiniz Diğer Ürünleri Bulduk!',
-        'new'                    => 'Yeni',
-        'as-low-as'              => 'Şu fiyattan başlayan',
-        'starting-at'            => 'Başlangıç fiyatı',
-        'name'                   => 'Ad',
-        'qty'                    => 'Adet',
-        'offers'                 => ':qty adet alın, her biri :price ve %:discount indirim ile satın alın',
-        'tax-inclusive'          => 'Tüm vergiler dahil',
-
-        'sort-by' => [
-            'title'   => 'Sırala',
-            'options' => [
-                'from-a-z'        => 'A’dan Z’ye',
-                'from-z-a'        => 'Z’den A’ya',
-                'latest-first'    => 'En Yeni İlk',
-                'oldest-first'    => 'En Eski İlk',
-                'cheapest-first'  => 'En Ucuz İlk',
-                'expensive-first' => 'En Pahalı İlk',
+        'prices' => [
+            'grouped' => [
+                'starting-at' => 'Başlangıç fiyatı',
+            ],
+    
+            'configurable' => [
+                'as-low-as' => 'Şu fiyattan başlayarak',
             ],
         ],
-
+    
+        'sort-by' => [
+            'title'   => 'Sıralama',
+            'options' => [
+                'from-a-z'        => 'A\'dan Z\'ye',
+                'from-z-a'        => 'Z\'den A\'ya',
+                'latest-first'    => 'En yeni önce',
+                'oldest-first'    => 'En eski önce',
+                'cheapest-first'  => 'En ucuz önce',
+                'expensive-first' => 'En pahalı önce',
+            ],
+        ],
+    
         'view' => [
             'type' => [
                 'configurable' => [
                     'select-options'       => 'Lütfen bir seçenek seçin',
                     'select-above-options' => 'Lütfen yukarıdaki seçenekleri seçin',
                 ],
-
+    
                 'bundle' => [
                     'none' => 'Hiçbiri',
                 ],
-
+    
                 'downloadable' => [
                     'samples' => 'Örnekler',
                     'links'   => 'Bağlantılar',
                     'sample'  => 'Örnek',
                 ],
-
+    
                 'grouped' => [
-                    'name' => 'Ad',
+                    'name' => 'Adı',
                 ],
             ],
-
+    
+            'gallery' => [
+                'thumbnail-image' => 'Küçük Resim',
+                'product-image'   => 'Ürün Resmi',
+            ],
+    
             'reviews' => [
                 'cancel'      => 'İptal Et',
+                'rating'      => 'Değerlendirme',
                 'success'     => 'İnceleme başarıyla gönderildi.',
                 'attachments' => 'Ekler',
+                'title'       => 'Başlık',
+                'comment'     => 'Yorum',
+                'customer-review'        => 'Müşteri İncelemeleri',
+                'submit-review'          => 'İnceleme Gönder',
+                'write-a-review'         => 'İnceleme Yaz',
+                'empty-review'           => 'İnceleme bulunamadı, bu ürünü değerlendiren ilk kişi olun',
+                'load-more'              => 'Daha Fazla Yükle',
+                'failed-to-upload'       => 'Resim yüklenemedi',
+            ],
+    
+            'description'            => 'Açıklama',
+            'additional-information' => 'Ek Bilgiler',
+            'review'                 => 'İncelemeler',
+            'related-product-title'  => 'İlgili Ürünler',
+            'up-sell-title'          => 'Beğenebileceğiniz diğer ürünleri bulduk!',
+            'tax-inclusive'          => 'Tüm vergiler dahil',
+            'add-to-cart'            => 'Sepete Ekle',
+            'buy-now'                => 'Hemen Al',
+            'compare'                => 'Karşılaştır',
+            'add-to-compare'         => 'Ürün karşılaştırmaya eklendi.',
+            'already-in-compare'     => 'Ürün zaten karşılaştırmada.',
+        ],
+    
+        'type' => [
+            'abstract' => [
+                'offers' => ':qty adet al, her biri için :price öde ve %:discount tasarruf et',
             ],
         ],
-    ],
+    ],    
 
     'categories' => [
         'filters' => [

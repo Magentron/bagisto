@@ -156,6 +156,7 @@ return [
                     'status'           => 'Status',
                     'success'          => 'Erfolgreich',
                     'view'             => 'Ansehen',
+                    'product-count'    => ':count + Mehr Produkte'
                 ],
             ],
 
@@ -175,7 +176,6 @@ return [
                 'comment-success'       => 'Kommentar erfolgreich hinzugefügt.',
                 'create-success'        => 'Bestellung erfolgreich erstellt',
                 'cancel-success'        => 'Bestellung erfolgreich storniert',
-                'create-invoice'        => 'Rechnung erstellen',
                 'discount'              => 'Rabatt - :discount',
                 'download-pdf'          => 'PDF herunterladen',
                 'grand-total'           => 'Gesamtsumme - :grand_total',
@@ -185,7 +185,6 @@ return [
                 'item-shipped'          => 'Versandt (:qty_shipped)',
                 'item-canceled'         => 'Storniert (:qty_canceled)',
                 'item-refunded'         => 'Erstattet (:qty_refunded)',
-                'invoice'               => 'Rechnung',
                 'invoice-id'            => 'Rechnung #:invoice',
                 'invoices'              => 'Rechnungen',
                 'notify-customer'       => 'Kunde benachrichtigen',
@@ -193,7 +192,6 @@ return [
                 'no-shipment-found'     => 'Keine Sendungen gefunden',
                 'name'                  => 'Name',
                 'no-refund-found'       => 'Keine Rückerstattung gefunden',
-                'new-invoice'           => 'Neue Rechnung',
                 'order-date'            => 'Bestelldatum',
                 'order-status'          => 'Bestellstatus',
                 'order-information'     => 'Bestellinformationen',
@@ -202,7 +200,6 @@ return [
                 'payment-method'        => 'Zahlungsmethode',
                 'per-unit'              => 'Pro Einheit',
                 'quantity'              => 'Menge',
-                'qty-to-invoiced'       => 'Menge zur Rechnungsstellung',
                 'refunded'              => 'Erstattet',
                 'refund-id'             => 'Rückerstattung #:refund',
                 'refund'                => 'Rückerstattung',
@@ -423,10 +420,17 @@ return [
             ],
 
             'create' => [
-                'creation-error' => 'Die Erstellung der Bestellrechnung ist nicht erlaubt.',
-                'create-success' => 'Rechnung erfolgreich erstellt',
-                'invalid-qty'    => 'Es wurde eine ungültige Menge zum Rechnungsstellen von Artikeln gefunden.',
-                'product-error'  => 'Rechnung kann nicht ohne Produkte erstellt werden.',
+                'invoice'         => 'Rechnung',
+                'create-invoice'  => 'Rechnung erstellen',
+                'new-invoice'     => 'Neue Rechnung',
+                'product-image'   => 'Produktbild',
+                'amount-per-unit' => ':amount pro Einheit x :qty Menge',
+                'sku'             => 'Artikelnummer - :sku',
+                'qty-to-invoiced' => 'Menge zur Rechnungsstellung',
+                'creation-error'  => 'Die Erstellung der Auftragsrechnung ist nicht erlaubt.',
+                'create-success'  => 'Rechnung erfolgreich erstellt',
+                'invalid-qty'     => 'Ungültige Menge für Rechnungspositionen gefunden.',
+                'product-error'   => 'Rechnung kann nicht ohne Produkte erstellt werden.',
             ],
 
             'invoice-pdf' => [
@@ -656,7 +660,6 @@ return [
                             'status'          => 'Status',
                             'weight'          => 'Gewicht',
                             'images'          => 'Bilder',
-
                         ],
 
                         'mass-edit' => [
@@ -674,22 +677,24 @@ return [
                     ],
 
                     'grouped' => [
-                        'add-btn'     => 'Produkt hinzufügen',
-                        'delete'      => 'Löschen',
-                        'default-qty' => 'Standardmenge',
-                        'empty-title' => 'Produkt hinzufügen',
-                        'empty-info'  => 'Um verschiedene Kombinationen von Produkten zu erstellen.',
-                        'info'        => 'Ein Gruppenprodukt besteht aus eigenständigen Artikeln, die als Set präsentiert werden und Variationen oder Koordination nach Saison oder Thema ermöglichen. Jedes Produkt kann einzeln oder als Teil der Gruppe gekauft werden.',
-                        'sku'         => 'Artikelnummer (SKU) - :sku',
-                        'title'       => 'Gruppenprodukte',
+                        'add-btn'           => 'Produkt hinzufügen',
+                        'delete'            => 'Löschen',
+                        'default-qty'       => 'Standardmenge',
+                        'empty-title'       => 'Produkt hinzufügen',
+                        'empty-info'        => 'Um verschiedene Kombinatinen von Produkten zu erstellen.',
+                        'image-placeholder' => 'Produktbild',
+                        'info'              => 'Ein Gruppenprodukt besteht aus eigenständigen Artikeln, die als Set präsentiert werden und Variationen oder Koordination nach Saison oder Thema ermöglichen. Jedes Produkt kann einzeln oder als Teil der Gruppe gekauft werden.',
+                        'sku'               => 'Artikelnummer (SKU) - :sku',
+                        'title'             => 'Gruppenprodukte',
                     ],
 
                     'bundle' => [
-                        'add-btn'     => 'Option hinzufügen',
-                        'empty-title' => 'Option hinzufügen',
-                        'empty-info'  => 'Um Bündeloptionen zu erstellen.',
-                        'info'        => 'Ein Bündelprodukt ist ein Paket aus mehreren Artikeln oder Dienstleistungen, die zusammen zu einem Sonderpreis verkauft werden und den Kunden Wert und Bequemlichkeit bieten.',
-                        'title'       => 'Bündelartikel',
+                        'add-btn'           => 'Option hinzufügen',
+                        'empty-title'       => 'Option hinzufügen',
+                        'empty-info'        => 'Um Bündeloptionen zu erstellen.',
+                        'image-placeholder' => 'Produktbild',
+                        'info'              => 'Ein Bündelprodukt ist ein Paket aus mehreren Artikeln oder Dienstleistungen, die zusammen zu einem Sonderpreis verkauft werden und den Kunden Wert und Bequemlichkeit bieten.',
+                        'title'             => 'Bündelartikel',
 
                         'update-create' => [
                             'checkbox'    => 'Checkbox',
@@ -1888,7 +1893,7 @@ return [
                 'delete-success'              => 'Warenkorb-Gutschein erfolgreich gelöscht',
                 'mass-delete-success'         => 'Ausgewählte Elemente erfolgreich gelöscht',
                 'success'                     => ':name erfolgreich erstellt',
-            
+
                 'datagrid' => [
                     'coupon-code'     => 'Gutscheincode',
                     'created-date'    => 'Erstellungsdatum',
@@ -2459,7 +2464,7 @@ return [
             'delete-warning'     => 'Sind Sie sicher, dass Sie diese Aktion ausführen möchten?',
             'login-error'        => 'Bitte überprüfen Sie Ihre Anmeldeinformationen und versuchen Sie es erneut.',
             'activate-warning'   => 'Ihr Konto wurde noch nicht aktiviert. Bitte kontaktieren Sie den Administrator.',
-            'last-delete-error'  => 'Letzte Benutzerlöschung fehlgeschlagen.'
+            'last-delete-error'  => 'Letzte Benutzerlöschung fehlgeschlagen.',
         ],
 
         'roles' => [
@@ -2558,6 +2563,7 @@ return [
                 'footer-link'                   => 'Fußzeilenlinks',
                 'footer-link-form-title'        => 'Fußzeilenlink',
                 'slider-description'            => 'Mit diesem Thema können Sie Slider anpassen.',
+                'slider-required'               => 'Slider-Feld ist erforderlich.',
                 'slider-add-btn'                => 'Slider hinzufügen',
                 'general'                       => 'Allgemein',
                 'add-filter-btn'                => 'Filter hinzufügen',
@@ -2565,8 +2571,6 @@ return [
                 'save-btn'                      => 'Thema speichern',
                 'filter-title'                  => 'Titel',
                 'sort'                          => 'Sortieren',
-                'desc'                          => 'Absteigend',
-                'asc'                           => 'Aufsteigend',
                 'limit'                         => 'Limit',
                 'key'                           => 'Schlüssel: :key',
                 'value'                         => 'Wert: :value',
@@ -2675,7 +2679,7 @@ return [
                 ],
 
                 'products' => [
-                    'info'  => 'Gastbestellung, Startseite, Produktansichtsseite, Warenkorbansichtsseite, Ladenfront, Bewertung und soziale Freigabe von Attributen einrichten.',
+                    'info'  => 'Gastkasse einrichten, Produktansichtsseite, Warenkorbansichtsseite, Ladenfront, Bewertung und Attribut-Social-Share festlegen.',
                     'title' => 'Produkte',
 
                     'guest-checkout' => [
@@ -3078,13 +3082,13 @@ return [
                     'categories'                      => 'Kategorien',
                     'customers'                       => 'Kunden',
                     'sku'                             => 'Artikelnummer: :sku',
-                    'explore-all-matching-products'   => 'Erkunden Sie alle Produkte, die zu ":query" passen (:count)',
+                    'explore-all-matching-products'   => 'Erkunden Sie alle Produkte, die zu \":query\" passen (:count)',
                     'explore-all-products'            => 'Alle Produkte erkunden',
-                    'explore-all-matching-orders'     => 'Erkunden Sie alle Bestellungen, die zu ":query" passen (:count)',
+                    'explore-all-matching-orders'     => 'Erkunden Sie alle Bestellungen, die zu \":query\" passen (:count)',
                     'explore-all-orders'              => 'Alle Bestellungen erkunden',
-                    'explore-all-matching-categories' => 'Erkunden Sie alle Kategorien, die zu ":query" passen (:count)',
+                    'explore-all-matching-categories' => 'Erkunden Sie alle Kategorien, die zu \":query\" passen (:count)',
                     'explore-all-categories'          => 'Alle Kategorien erkunden',
-                    'explore-all-matching-customers'  => 'Erkunden Sie alle Kunden, die zu ":query" passen (:count)',
+                    'explore-all-matching-customers'  => 'Erkunden Sie alle Kunden, die zu \":query\" passen (:count)',
                     'explore-all-customers'           => 'Alle Kunden erkunden',
                 ],
             ],
@@ -3156,11 +3160,24 @@ return [
             ],
 
             'filters' => [
-                'title' => 'Filter anwenden',
+                'title'  => 'Filter anwenden',
+                'select' => 'Auswählen',
+
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => 'Mindestens 2 Zeichen eingeben...',
+                        'no-results'        => 'Keine Ergebnisse gefunden...',
+                    ],
+                ],
 
                 'custom-filters' => [
                     'title'     => 'Benutzerdefinierte Filter',
                     'clear-all' => 'Alles löschen',
+                ],
+
+                'boolean-options' => [
+                    'true'  => 'Wahr',
+                    'false' => 'Falsch',
                 ],
 
                 'date-options' => [
@@ -3274,6 +3291,7 @@ return [
         'events'                   => 'Ereignisse',
         'sitemaps'                 => 'Sitemaps',
         'newsletter-subscriptions' => 'Newsletter-Abonnements',
+        'transactions'             => 'Transaktionen',
     ],
 
     'errors' => [

@@ -156,6 +156,7 @@ return [
                     'status'           => 'Durum',
                     'success'          => 'Başarılı',
                     'view'             => 'Görüntüle',
+                    'product-count'    => ':count + Daha Fazla Ürün'
                 ],
             ],
 
@@ -175,7 +176,6 @@ return [
                 'comment-success'       => 'Yorum başarıyla eklendi.',
                 'create-success'        => 'Sipariş başarıyla oluşturuldu',
                 'cancel-success'        => 'Sipariş başarıyla iptal edildi',
-                'create-invoice'        => 'Fatura Oluştur',
                 'discount'              => 'İndirim - :discount',
                 'download-pdf'          => 'PDF İndir',
                 'grand-total'           => 'Genel Toplam - :grand_total',
@@ -185,7 +185,6 @@ return [
                 'item-shipped'          => 'Gönderildi (:qty_shipped)',
                 'item-canceled'         => 'İptal Edildi (:qty_canceled)',
                 'item-refunded'         => 'İade Edildi (:qty_refunded)',
-                'invoice'               => 'Fatura',
                 'invoice-id'            => 'Fatura #:invoice',
                 'invoices'              => 'Faturalar',
                 'notify-customer'       => 'Müşteriyi Bilgilendir',
@@ -193,7 +192,6 @@ return [
                 'no-shipment-found'     => 'Gönderim Bulunamadı',
                 'name'                  => 'Ad',
                 'no-refund-found'       => 'İade Bulunamadı',
-                'new-invoice'           => 'Yeni Fatura',
                 'order-date'            => 'Sipariş Tarihi',
                 'order-status'          => 'Sipariş Durumu',
                 'order-information'     => 'Sipariş Bilgileri',
@@ -202,7 +200,6 @@ return [
                 'payment-method'        => 'Ödeme Yöntemi',
                 'per-unit'              => 'Birim Başı',
                 'quantity'              => 'Miktar',
-                'qty-to-invoiced'       => 'Faturalanacak Miktar',
                 'refunded'              => 'İade Edildi',
                 'refund-id'             => 'İade #:refund',
                 'refund'                => 'İade',
@@ -422,11 +419,18 @@ return [
                 'tax'                    => 'Vergi Tutarı - :tax',
             ],
 
-            'create'   => [
-                'creation-error' => 'Sipariş faturası oluşturulamaz.',
-                'create-success' => 'Fatura başarıyla oluşturuldu',
-                'invalid-qty'    => 'Faturalandırılacak ürünlerde geçersiz miktar bulduk.',
-                'product-error'  => 'Ürün olmadan fatura oluşturulamaz.',
+            'create' => [
+                'invoice'         => 'Fatura',
+                'create-invoice'  => 'Fatura Oluştur',
+                'new-invoice'     => 'Yeni Fatura',
+                'product-image'   => 'Ürün Resmi',
+                'amount-per-unit' => ':amount Birim Başına x :qty Miktar',
+                'sku'             => 'SKU - :sku',
+                'qty-to-invoiced' => 'Faturalanacak Miktar',
+                'creation-error'  => 'Sipariş faturası oluşturulamaz.',
+                'create-success'  => 'Fatura başarıyla oluşturuldu',
+                'invalid-qty'     => 'Faturalanacak öğeler için geçersiz miktar bulduk.',
+                'product-error'   => 'Ürün olmadan fatura oluşturulamaz.',
             ],
 
             'invoice-pdf' => [
@@ -619,7 +623,6 @@ return [
                     'empty-info'        => ':type ürünleri eklemek için.',
                     'sku'               => 'SKU - :sku',
                     'image-placeholder' => 'Ürün Resmi',
-
                 ],
 
                 'types' => [
@@ -674,22 +677,24 @@ return [
                     ],
 
                     'grouped' => [
-                        'add-btn'     => 'Ürün Ekle',
-                        'delete'      => 'Sil',
-                        'default-qty' => 'Varsayılan Miktar',
-                        'empty-title' => 'Ürün Ekle',
-                        'empty-info'  => 'Hızlı bir şekilde ürünün farklı kombinasyonlarını oluşturmak için.',
-                        'info'        => 'Gruplu bir ürün, bir takım olarak sunulan bağımsız ürünlerden oluşur ve müşterilere değer ve kolaylık sağlayan özel bir fiyatla birlikte satılır. Her ürün bireysel olarak veya gruba dahil olarak satın alınabilir.',
-                        'sku'         => 'SKU - :sku',
-                        'title'       => 'Grup Ürünler',
+                        'add-btn'           => 'Ürün Ekle',
+                        'delete'            => 'Sil',
+                        'default-qty'       => 'Varsayılan Miktar',
+                        'empty-title'       => 'Ürün Ekle',
+                        'empty-info'        => 'Hızlı bir şekilde ürünün farklı kombinasyonlarını oluşturmak için.',
+                        'image-placeholder' => 'Ürün Resmi',
+                        'info'              => 'Gruplu bir ürün, bir takım olarak sunulan bağımsız ürünlerden oluşur ve müşterilere değer ve kolaylık sağlayan özel bir fiyatla birlikte satılır. Her ürün bireysel olarak veya gruba dahil olarak satın alınabilir.',
+                        'sku'               => 'SKU - :sku',
+                        'title'             => 'Grup Ürünler',
                     ],
 
                     'bundle' => [
-                        'add-btn'     => 'Seçenek Ekle',
-                        'empty-title' => 'Seçenek Ekle',
-                        'empty-info'  => 'Hızlı bir şekilde paketleme seçenekleri oluşturmak için.',
-                        'info'        => 'Bir paketleme ürünü, bir arada satılan birden fazla ürün veya hizmetin özel bir fiyatla sunulduğu bir pakettir ve müşterilere değer ve kolaylık sağlar.',
-                        'title'       => 'Paketleme Ürünleri',
+                        'add-btn'           => 'Seçenek Ekle',
+                        'empty-title'       => 'Seçenek Ekle',
+                        'empty-info'        => 'Hızlı bir şekilde paketleme seçenekleri oluşturmak için.',
+                        'image-placeholder' => 'Ürün Resmi',
+                        'info'              => 'Bir paketleme ürünü, bir arada satılan birden fazla ürün veya hizmetin özel bir fiyatla sunulduğu bir pakettir ve müşterilere değer ve kolaylık sağlar.',
+                        'title'             => 'Paketleme Ürünleri',
 
                         'update-create' => [
                             'checkbox'    => 'Onay Kutusu',
@@ -2450,7 +2455,7 @@ return [
                 'status'           => 'Durum',
                 'save-btn'         => 'Kullanıcıyı Kaydet',
             ],
-            
+
             'delete-failed'      => 'Kullanıcı silme başarısız.',
             'cannot-change'      => 'Kullanıcı değiştirilemez.',
             'update-success'     => 'Kullanıcı başarıyla güncellendi.',
@@ -2460,7 +2465,7 @@ return [
             'delete-warning'     => 'Bu işlemi gerçekleştirmek istediğinizden emin misiniz?',
             'login-error'        => 'Kimlik bilgilerinizi kontrol edin ve yeniden deneyin.',
             'activate-warning'   => 'Hesabınız henüz etkinleştirilmedi, lütfen yöneticiyle iletişime geçin.',
-            'last-delete-error'  => 'Son kullanıcıyı silme başarısız.'
+            'last-delete-error'  => 'Son kullanıcıyı silme başarısız.',
         ],
 
         'roles' => [
@@ -2559,6 +2564,7 @@ return [
                 'footer-link'                   => 'Footer Bağlantıları',
                 'footer-link-form-title'        => 'Footer Bağlantısı',
                 'slider-description'            => 'Slider ile ilgili tema özelleştirmesi.',
+                'slider-required'               => 'Slider alanı gereklidir.',
                 'slider-add-btn'                => 'Slider Ekle',
                 'general'                       => 'Genel',
                 'add-filter-btn'                => 'Filtre Ekle',
@@ -2566,8 +2572,6 @@ return [
                 'save-btn'                      => 'Kaydet',
                 'filter-title'                  => 'Başlık',
                 'sort'                          => 'Sırala',
-                'desc'                          => 'Azalan',
-                'asc'                           => 'Artan',
                 'limit'                         => 'Sınırla',
                 'key'                           => 'Anahtar: :key',
                 'value'                         => 'Değer: :value',
@@ -2675,7 +2679,7 @@ return [
                 ],
 
                 'products' => [
-                    'info'  => 'Misafir ödemesini, ana sayfa, ürün görünüm sayfası, alışveriş sepeti görünüm sayfası, mağaza ön yüzü, inceleme ve özellik sosyal paylaşımını ayarlayın.',
+                    'info'  => 'Misafir ödeme, ürün görünüm sayfası, alışveriş sepeti görünüm sayfası, mağaza ön yüzü, inceleme ve özellik sosyal paylaşımını ayarlayın.',
                     'title' => 'Ürünler',
 
                     'guest-checkout' => [
@@ -3156,11 +3160,24 @@ return [
             ],
 
             'filters' => [
-                'title' => 'Filtreleri Uygula',
+                'title'  => 'Filtreleri Uygula',
+                'select' => 'Seçiniz',
+
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => 'En az 2 karakter girin...',
+                        'no-results'        => 'Sonuç bulunamadı...',
+                    ],
+                ],
 
                 'custom-filters' => [
                     'title'     => 'Özel Filtreler',
                     'clear-all' => 'Hepsini Temizle',
+                ],
+
+                'boolean-options' => [
+                    'true'  => 'Doğru',
+                    'false' => 'Yanlış',
                 ],
 
                 'date-options' => [
@@ -3274,6 +3291,7 @@ return [
         'events'                   => 'Etkinlikler',
         'sitemaps'                 => 'Site Haritaları',
         'newsletter-subscriptions' => 'Bülten Abonelikleri',
+        'transactions'             => 'İşlemler',
     ],
 
     'errors' => [

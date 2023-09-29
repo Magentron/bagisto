@@ -156,6 +156,7 @@ return [
                     'status'          => 'ステータス',
                     'success'         => '成功',
                     'view'            => '表示',
+                    'product-count'   => ':count + 他の製品'
                 ],
             ],
 
@@ -175,7 +176,6 @@ return [
                 'comment-success'       => 'コメントが正常に追加されました。',
                 'create-success'        => '注文が正常に作成されました',
                 'cancel-success'        => '注文は正常にキャンセルされました',
-                'create-invoice'        => '請求書を作成',
                 'discount'              => '割引 - :discount',
                 'download-pdf'          => 'PDFをダウンロード',
                 'grand-total'           => '合計金額 - :grand_total',
@@ -185,7 +185,6 @@ return [
                 'item-shipped'          => '発送済み (:qty_shipped)',
                 'item-canceled'         => 'キャンセル済み (:qty_canceled)',
                 'item-refunded'         => '返金済み (:qty_refunded)',
-                'invoice'               => '請求書',
                 'invoice-id'            => '請求書 #:invoice',
                 'invoices'              => '請求書',
                 'notify-customer'       => '顧客に通知',
@@ -193,7 +192,6 @@ return [
                 'no-shipment-found'     => '出荷情報が見つかりません',
                 'name'                  => '名前',
                 'no-refund-found'       => '返金情報が見つかりません',
-                'new-invoice'           => '新しい請求書',
                 'order-date'            => '注文日',
                 'order-status'          => '注文ステータス',
                 'order-information'     => '注文情報',
@@ -202,7 +200,6 @@ return [
                 'payment-method'        => '支払い方法',
                 'per-unit'              => '単位あたり',
                 'quantity'              => '数量',
-                'qty-to-invoiced'       => '請求予定数',
                 'refunded'              => '返金済み',
                 'refund-id'             => '返金 #:refund',
                 'refund'                => '返金',
@@ -423,10 +420,17 @@ return [
             ],
 
             'create' => [
-                'creation-error' => '注文請求書の作成は許可されていません。',
-                'create-success' => '請求書が正常に作成されました',
-                'invalid-qty'    => '無効な数量の請求書アイテムが見つかりました。',
-                'product-error'  => '商品なしで請求書を作成することはできません。',
+                'invoice'         => '請求書',
+                'create-invoice'  => '請求書を作成',
+                'new-invoice'     => '新しい請求書',
+                'product-image'   => '製品画像',
+                'amount-per-unit' => ':amount 1単位あたり x :qty 数量',
+                'sku'             => 'SKU - :sku',
+                'qty-to-invoiced' => '請求数量',
+                'creation-error'  => '注文請求書の作成は許可されていません。',
+                'create-success'  => '請求書が正常に作成されました',
+                'invalid-qty'     => '無効な数量の請求アイテムが見つかりました。',
+                'product-error'   => '製品なしでは請求書を作成できません。',
             ],
 
             'invoice-pdf' => [
@@ -673,22 +677,24 @@ return [
                     ],
 
                     'grouped' => [
-                        'add-btn'     => '製品を追加',
-                        'delete'      => '削除',
-                        'default-qty' => 'デフォルト数量',
-                        'empty-title' => '製品を追加',
-                        'empty-info'  => 'さまざまな製品の組み合わせをすぐに作成するには。',
-                        'info'        => 'グループ化された製品は、セットとして表示されるスタンドアロンのアイテムから構成され、シーズンやテーマによる変更や調整が可能です。各製品は個別に購入するか、グループの一部として購入できます。',
-                        'sku'         => 'SKU - :sku',
-                        'title'       => 'グループ化された製品',
+                        'add-btn'           => '製品を追加',
+                        'delete'            => '削除',
+                        'default-qty'       => 'デフォルト数量',
+                        'empty-title'       => '製品を追加',
+                        'empty-info'        => 'さまざまな製品の組み合わせをすぐに作成するには。',
+                        'image-placeholder' => '製品画像',
+                        'info'              => 'グループ化された製品は、セットとして表示されるスタンドアロンのアイテムから構成され、シーズンやテーマによる変更や調整が可能です。各製品は個別に購入するか、グループの一部として購入できます。',
+                        'sku'               => 'SKU - :sku',
+                        'title'             => 'グループ化された製品',
                     ],
 
                     'bundle' => [
-                        'add-btn'     => 'オプションを追加',
-                        'empty-title' => 'オプションを追加',
-                        'empty-info'  => 'バンドルオプションをすぐに作成するには。',
-                        'info'        => 'バンドル製品は、複数のアイテムまたはサービスが特別価格で一緒に販売されるパッケージで、顧客にとって価値と便益を提供します。',
-                        'title'       => 'バンドルアイテム',
+                        'add-btn'           => 'オプションを追加',
+                        'empty-title'       => 'オプションを追加',
+                        'empty-info'        => 'バンドルオプションをすぐに作成するには。',
+                        'image-placeholder' => '製品画像',
+                        'info'              => 'バンドル製品は、複数のアイテムまたはサービスが特別価格で一緒に販売されるパッケージで、顧客にとって価値と便益を提供します。',
+                        'title'             => 'バンドルアイテム',
 
                         'update-create' => [
                             'checkbox'    => 'チェックボックス',
@@ -1202,7 +1208,7 @@ return [
                 'title'                 => '顧客を編集',
             ],
 
-            'view' => [   
+            'view' => [
                 'address'                     => '住所',
                 'back-btn'                    => '戻る',
                 'add-note'                    => 'ノートを追加',
@@ -2458,7 +2464,7 @@ return [
             'delete-warning'     => 'このアクションを実行してもよろしいですか？',
             'login-error'        => '資格情報を確認して、もう一度試してください。',
             'activate-warning'   => 'アカウントはまだ有効になっていません。管理者に連絡してください。',
-            'last-delete-error'  => '最後のユーザーの削除に失敗しました。'
+            'last-delete-error'  => '最後のユーザーの削除に失敗しました。',
         ],
 
         'roles' => [
@@ -2525,7 +2531,6 @@ return [
                     'type'         => 'タイプ',
                     'name'         => '名前',
                     'channel_name' => 'チャネル名',
-
                 ],
             ],
 
@@ -2558,6 +2563,7 @@ return [
                 'footer-link'                   => 'フッターリンク',
                 'footer-link-form-title'        => 'フッターリンク',
                 'slider-description'            => 'スライダー関連のテーマカスタマイズ。',
+                'slider-required'               => 'スライダーフィールドは必須です。',
                 'slider-add-btn'                => 'スライダーを追加',
                 'general'                       => '一般',
                 'add-filter-btn'                => 'フィルターを追加',
@@ -2565,8 +2571,6 @@ return [
                 'save-btn'                      => '保存',
                 'filter-title'                  => 'タイトル',
                 'sort'                          => 'ソート',
-                'desc'                          => '降順',
-                'asc'                           => '昇順',
                 'limit'                         => '制限',
                 'key'                           => 'キー: :key',
                 'value'                         => '値: :value',
@@ -2592,7 +2596,7 @@ return [
                 'edit'                          => '編集',
                 'back'                          => '戻る',
                 'preview'                       => 'プレビュー',
-                'channels'                      => 'チャンネル'
+                'channels'                      => 'チャンネル',
             ],
 
             'create-success' => 'テーマは正常に作成されました',
@@ -2675,7 +2679,7 @@ return [
                 ],
 
                 'products' => [
-                    'info'  => 'ゲストチェックアウト、ホームページ、製品表示ページ、カート表示ページ、ストアフロント、レビュー、および属性のソーシャル共有を設定します。',
+                    'info'  => 'ゲストチェックアウト、製品表示ページ、カート表示ページ、ストアフロント、レビュー、属性ソーシャルシェアを設定します。',
                     'title' => '製品',
 
                     'guest-checkout' => [
@@ -3156,11 +3160,24 @@ return [
             ],
 
             'filters' => [
-                'title' => 'フィルターを適用',
+                'title'  => 'フィルターを適用',
+                'select' => '選択',
+
+                'dropdown' => [
+                    'searchable' => [
+                        'atleast-two-chars' => '少なくとも2文字を入力してください...',
+                        'no-results'        => '結果が見つかりませんでした...',
+                    ],
+                ],
 
                 'custom-filters' => [
                     'title'     => 'カスタムフィルター',
                     'clear-all' => 'すべてクリア',
+                ],
+
+                'boolean-options' => [
+                    'true'  => '真',
+                    'false' => '偽',
                 ],
 
                 'date-options' => [
@@ -3274,6 +3291,7 @@ return [
         'events'                   => 'イベント',
         'sitemaps'                 => 'サイトマップ',
         'newsletter-subscriptions' => 'ニュースレター購読',
+        'transactions'             => '取引',
     ],
 
     'errors' => [
